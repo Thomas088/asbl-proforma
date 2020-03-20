@@ -23,15 +23,12 @@ window.addEventListener("DOMContentLoaded", function() {
         minEntriesResult.innerHTML = Math.min.apply(null, tableauResult);
         averageEntriesResult.innerHTML = (tableauResult.reduce((acc, entree) => acc + entree, 0) / tableauResult.length).toFixed(2);
         listOfEntriesResult.innerHTML = tableauResult.join(", ");
-
-    
     }); 
 
     restart.addEventListener("click", () => {
-        entry.innerHTML = 0;
         tableauResult.length = 0;
         const tabResult = Array.from(entries.querySelectorAll(".result"));
-        tabResult.forEach((elt) => elt.innerHTML = "");   
+        tabResult.forEach((elt) => elt.innerHTML = ""); 
     });
 
 });

@@ -12,27 +12,25 @@ window.addEventListener("DOMContentLoaded", function() {
     const listOfEntriesResult = document.querySelector(".list-of-entries-result");
     const sequenceEntriesResult = document.querySelector(".sequence-entries-result");
     const tableauResult = [];
+    let total;
 
     submit.addEventListener("click", () => {
 
         entry = parseInt(document.querySelector(".user-input").value);
         tableauResult.push(entry);
         totalEntriesResult.innerHTML = tableauResult.length;
-        sumEntriesResult.innerHTML = tableauResult.reduce((acc, entree) => acc + entree, 0);
+        total = tableauResult.reduce((acc, entree) => acc + entree, 0);
+        sumEntriesResult.innerHTML = total;
         maxEntriesResult.innerHTML = Math.max.apply(null, tableauResult);
         minEntriesResult.innerHTML = Math.min.apply(null, tableauResult);
-        averageEntriesResult.innerHTML = (tableauResult.reduce((acc, entree) => acc + entree, 0) / tableauResult.length).toFixed(2);
+        averageEntriesResult.innerHTML = (total / tableauResult.length).toFixed(2);
         listOfEntriesResult.innerHTML = tableauResult.join(", ");
-
-        
-
     }); 
 
     restart.addEventListener("click", () => {
-        entry.innerHTML = 0;
         tableauResult.length = 0;
         const tabResult = Array.from(entries.querySelectorAll(".result"));
-        tabResult.forEach((elt) => elt.innerHTML = "");   
+        tabResult.forEach((elt) => elt.innerHTML = ""); 
     });
 
 });
