@@ -11,10 +11,13 @@ window.addEventListener("DOMContentLoaded", function() {
     const averageEntriesResult = document.querySelector(".average-entries-result");
     const listOfEntriesResult = document.querySelector(".list-of-entries-result");
     const sequenceEntriesResult = document.querySelector(".sequence-entries-result");
+
+
     const tableauResult = [];
 
     submit.addEventListener("click", () => {
 
+        // console.log(tableauResult); DEBUG
         entry = parseInt(document.querySelector(".user-input").value);
         tableauResult.push(entry);
         totalEntriesResult.innerHTML = tableauResult.length;
@@ -22,7 +25,7 @@ window.addEventListener("DOMContentLoaded", function() {
         maxEntriesResult.innerHTML = Math.max.apply(null, tableauResult);
         minEntriesResult.innerHTML = Math.min.apply(null, tableauResult);
         averageEntriesResult.innerHTML = (tableauResult.reduce((acc, entree) => acc + entree, 0) / tableauResult.length).toFixed(2);
-        listOfEntriesResult.innerHTML = tableauResult.join(", ");
+        listOfEntriesResult.innerHTML = tableauResult.join(" ")
     }); 
 
     restart.addEventListener("click", () => {

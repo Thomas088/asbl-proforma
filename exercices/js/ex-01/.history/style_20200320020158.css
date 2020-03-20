@@ -4,7 +4,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Baloo 2', cursive;
 }
 
 .tableau {
@@ -14,8 +13,8 @@ body {
 
 .entry-user {
     display: flex;
-    padding-bottom: 1em;
-    margin-bottom: 2em;;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;;
     border-bottom: 1px solid #000;
 }
 
@@ -26,8 +25,6 @@ body {
 .user-entry {
     outline: none;
     appearance: none;
-    -webkit-appearance: none; 
-    margin: 0; 
 }
 
 .submit-number, .restart {
@@ -35,20 +32,14 @@ body {
     justify-content: center;
     align-items: center;
     border: 1px solid gray;
-    margin: 0 1em;
-    padding: 0 1em;
+    margin: 0 1rem;
+    padding: 0 1rem;
     cursor: pointer;
 }
 
 .result {
-    width: 10em;
-    height: 1.5em;
-    display: flex;
-    padding-left: 0.5rem;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    bottom: 0.5rem;
+    width: 5rem;
+    height: 1.5rem;
     border: 1px solid gray;
 }
 
@@ -56,9 +47,4 @@ body {
     display: flex;
     justify-content: space-between;
     margin: 0.5rem 0;
-}
-
-::placeholder {
-    padding-left: 0.5em;
-    font-family: 'Baloo 2', cursive;
 }

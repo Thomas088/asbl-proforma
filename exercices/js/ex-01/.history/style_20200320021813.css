@@ -4,7 +4,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Baloo 2', cursive;
 }
 
 .tableau {
@@ -41,14 +40,11 @@ body {
 }
 
 .result {
-    width: 10em;
+    width: 5em;
     height: 1.5em;
     display: flex;
-    padding-left: 0.5rem;
     justify-content: center;
     align-items: center;
-    position: relative;
-    bottom: 0.5rem;
     border: 1px solid gray;
 }
 
@@ -60,5 +56,4 @@ body {
 
 ::placeholder {
     padding-left: 0.5em;
-    font-family: 'Baloo 2', cursive;
 }

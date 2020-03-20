@@ -11,10 +11,13 @@ window.addEventListener("DOMContentLoaded", function() {
     const averageEntriesResult = document.querySelector(".average-entries-result");
     const listOfEntriesResult = document.querySelector(".list-of-entries-result");
     const sequenceEntriesResult = document.querySelector(".sequence-entries-result");
+
+
     const tableauResult = [];
 
     submit.addEventListener("click", () => {
 
+        // console.log(tableauResult); DEBUG
         entry = parseInt(document.querySelector(".user-input").value);
         tableauResult.push(entry);
         totalEntriesResult.innerHTML = tableauResult.length;
