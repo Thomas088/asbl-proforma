@@ -1,0 +1,32 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tableau {
+    border: 1px solid #000;
+    padding: 2em;
+}
+
+.entry-user {
+    display: flex;
+}
+
+.entry-user p {
+    padding-right: 1em;
+}
+
+.user-entry {
+    appearance: none;
+}
+
+.submit-number, .restart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solix gray;
+    padding: 0 1rem;
+}
