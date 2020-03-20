@@ -24,7 +24,12 @@ window.addEventListener("DOMContentLoaded", function() {
         averageEntriesResult.innerHTML = (tableauResult.reduce((acc, entree) => acc + entree, 0) / tableauResult.length).toFixed(2);
         listOfEntriesResult.innerHTML = tableauResult.join(", ");
 
-        
+        console.log(tableauResult.filter(elt => function() {
+            const seqArr = [];
+            if((tableauResult.elt) === elt +1) {
+                seqArr.push(elt);
+            }
+        }))
 
     }); 
 
@@ -33,6 +38,6 @@ window.addEventListener("DOMContentLoaded", function() {
         tableauResult.length = 0;
         const tabResult = Array.from(entries.querySelectorAll(".result"));
         tabResult.forEach((elt) => elt.innerHTML = "");   
-    });
+    })
 
-});
+})

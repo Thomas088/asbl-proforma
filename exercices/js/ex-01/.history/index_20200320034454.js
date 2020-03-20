@@ -24,8 +24,7 @@ window.addEventListener("DOMContentLoaded", function() {
         averageEntriesResult.innerHTML = (tableauResult.reduce((acc, entree) => acc + entree, 0) / tableauResult.length).toFixed(2);
         listOfEntriesResult.innerHTML = tableauResult.join(", ");
 
-        
-
+    
     }); 
 
     restart.addEventListener("click", () => {

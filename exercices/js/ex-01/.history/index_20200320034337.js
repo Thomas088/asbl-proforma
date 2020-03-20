@@ -33,6 +33,6 @@ window.addEventListener("DOMContentLoaded", function() {
         tableauResult.length = 0;
         const tabResult = Array.from(entries.querySelectorAll(".result"));
         tabResult.forEach((elt) => elt.innerHTML = "");   
-    });
+    })
 
-});
+})
