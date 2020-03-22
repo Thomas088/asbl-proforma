@@ -13,40 +13,41 @@ window.addEventListener("DOMContentLoaded", function() {
     const listOfEntriesResult = document.querySelector(".list-of-entries-result");
     const sequenceEntriesResult = document.querySelector(".sequence-entries-result");
     const tableauResult = [];
-
-
     const longestSequence = (arr) => {
 
-        let index = 0;
-        let longest = [0];
-        let lastValueInLongest;
-        let lastIndexOfArr = arr.length - 1;
-        
-        do {
+      let index = 0;
+      let longest = [0];
+      let lastValueInLongest;
+      let lastValueOfArr = arr.length - 1;
       
-          lastValueInLongest = longest[longest.length - 1];
-              
-              if(arr[index] < arr[index+1]) {
-                if(arr[index] > lastValueInLongest) {
-                  longest.push(arr[index]);
-                }
-              }
-          
-              if(arr[index+1] < arr[index]) {
-                if(arr[index] > lastValueInLongest) {
-                  longest.push(arr[index]);
-                } else {
-                  longest = [0];
-                }
-              }
-          
-          index++;
-        } while (index < test.length);
-        longest.shift();
-        return longest.join(", ");
-      }
+      do {
 
-      
+        lastValueInLongest = longest[longest.length - 1];
+        
+        if(lastValueInLongest < arr[lastValueOfArr]) {
+          
+        }    
+            if(arr[index] < arr[index+1]) {
+              if(arr[index] > lastValueInLongest) {
+                longest.push(arr[index]);
+              }
+            }
+        
+            if(arr[index+1] < arr[index]) {
+              if(arr[index] > lastValueInLongest) {
+                longest.push(arr[index]);
+              } else {
+                longest = [0];
+              }
+            }
+        
+        index++;
+      } while(index < arr.length);
+      longest.shift();
+      return longest.join(", ");
+    }
+
+
       
     submit.addEventListener("click", () => {
 

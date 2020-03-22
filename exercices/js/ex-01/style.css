@@ -41,8 +41,8 @@ body {
 }
 
 .result {
-    width: 10em;
-    height: 1.5em;
+    width: 15em;
+    height: 3em;
     display: flex;
     padding-left: 0.5rem;
     justify-content: center;
@@ -50,6 +50,7 @@ body {
     position: relative;
     bottom: 0.5rem;
     border: 1px solid gray;
+    overflow-x: scroll;
 }
 
 .entries div {
