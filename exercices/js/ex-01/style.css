@@ -58,7 +58,11 @@ body {
     margin: 0.5rem 0;
 }
 
-::placeholder {
+input {
+    outline: none;
+}
+
+::placeholder, input {
     padding-left: 0.5em;
     font-family: 'Baloo 2', cursive;
 }

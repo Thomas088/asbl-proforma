@@ -1,6 +1,7 @@
 window.addEventListener("DOMContentLoaded", function() {
 
     let entry;
+    let total;
     const submit = document.querySelector(".submit-number");
     const restart = document.querySelector(".restart");
     const entries = document.querySelector(".entries");
@@ -12,8 +13,41 @@ window.addEventListener("DOMContentLoaded", function() {
     const listOfEntriesResult = document.querySelector(".list-of-entries-result");
     const sequenceEntriesResult = document.querySelector(".sequence-entries-result");
     const tableauResult = [];
-    let total;
 
+
+    const longestSequence = (arr) => {
+
+        let index = 0;
+        let longest = [0];
+        let lastValueInLongest;
+        let lastIndexOfArr = arr.length - 1;
+        
+        do {
+      
+          lastValueInLongest = longest[longest.length - 1];
+              
+              if(arr[index] < arr[index+1]) {
+                if(arr[index] > lastValueInLongest) {
+                  longest.push(arr[index]);
+                }
+              }
+          
+              if(arr[index+1] < arr[index]) {
+                if(arr[index] > lastValueInLongest) {
+                  longest.push(arr[index]);
+                } else {
+                  longest = [0];
+                }
+              }
+          
+          index++;
+        } while (index < test.length);
+        longest.shift();
+        return longest.join(", ");
+      }
+
+      
+      
     submit.addEventListener("click", () => {
 
         entry = parseInt(document.querySelector(".user-input").value);
@@ -25,12 +59,15 @@ window.addEventListener("DOMContentLoaded", function() {
         minEntriesResult.innerHTML = Math.min.apply(null, tableauResult);
         averageEntriesResult.innerHTML = (total / tableauResult.length).toFixed(2);
         listOfEntriesResult.innerHTML = tableauResult.join(", ");
+        sequenceEntriesResult.innerHTML = longestSequence(tableauResult);
     }); 
 
     restart.addEventListener("click", () => {
+
         tableauResult.length = 0;
         const tabResult = Array.from(entries.querySelectorAll(".result"));
-        tabResult.forEach((elt) => elt.innerHTML = ""); 
+        tabResult.forEach((elt) => elt.innerHTML = "");
+
     });
 
 });
