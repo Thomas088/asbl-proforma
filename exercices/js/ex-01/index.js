@@ -23,20 +23,28 @@ window.addEventListener("DOMContentLoaded", function() {
       do {
 
         lastValueInLongest = longest[longest.length - 1];
-       
-            if(arr[index] < arr[index+1]) {
-              if(arr[index] > lastValueInLongest) {
-                longest.push(arr[index]);
-              }
+
+        if (arr.length > 0) {
+
+          if(arr[index+1] === undefined) {
+            return longest.join(", "); 
+          }
+            
+          if(arr[index] < arr[index+1]) {
+            if(arr[index] > lastValueInLongest) {
+              longest.push(arr[index]);
             }
-        
-            if(arr[index+1] < arr[index]) {
-              if(arr[index] > lastValueInLongest) {
-                longest.push(arr[index]);
-              } else {
-                longest = [0];
-              }
+          }
+      
+          if(arr[index+1] < arr[index]) {
+            if(arr[index] > lastValueInLongest) {
+              longest.push(arr[index]);
+            } else {
+              longest = [0];
             }
+          }
+
+        }
         
         index++;
       } while(index < arr.length);
@@ -44,7 +52,7 @@ window.addEventListener("DOMContentLoaded", function() {
       return longest.join(", ");
     }
 
-
+    Array.from(results).forEach((elt) => elt.innerHTML = 0);
       
     submit.addEventListener("click", () => {
 
