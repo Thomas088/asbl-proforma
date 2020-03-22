@@ -18,15 +18,11 @@ window.addEventListener("DOMContentLoaded", function() {
       let index = 0;
       let longest = [0];
       let lastValueInLongest;
-      let lastValueOfArr = arr.length - 1;
       
       do {
 
         lastValueInLongest = longest[longest.length - 1];
-        
-        if(lastValueInLongest < arr[lastValueOfArr]) {
-          
-        }    
+       
             if(arr[index] < arr[index+1]) {
               if(arr[index] > lastValueInLongest) {
                 longest.push(arr[index]);
