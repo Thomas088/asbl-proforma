@@ -5,6 +5,7 @@ window.addEventListener("DOMContentLoaded", function() {
     const submit = document.querySelector(".submit-number");
     const restart = document.querySelector(".restart");
     const entries = document.querySelector(".entries");
+    const results = entries.querySelectorAll(".result");
     const totalEntriesResult = document.querySelector(".total-entries-result");
     const sumEntriesResult = document.querySelector(".sum-entries-result");
     const maxEntriesResult = document.querySelector(".max-entries-result");
@@ -48,23 +49,23 @@ window.addEventListener("DOMContentLoaded", function() {
     submit.addEventListener("click", () => {
 
         entry = parseInt(document.querySelector(".user-input").value);
-        tableauResult.push(entry);
-        totalEntriesResult.innerHTML = tableauResult.length;
-        total = tableauResult.reduce((acc, entree) => acc + entree, 0);
-        sumEntriesResult.innerHTML = total;
-        maxEntriesResult.innerHTML = Math.max.apply(null, tableauResult);
-        minEntriesResult.innerHTML = Math.min.apply(null, tableauResult);
-        averageEntriesResult.innerHTML = (total / tableauResult.length).toFixed(2);
-        listOfEntriesResult.innerHTML = tableauResult.join(", ");
-        sequenceEntriesResult.innerHTML = longestSequence(tableauResult);
+
+        if(!isNaN(entry)) {
+          tableauResult.push(entry);
+          totalEntriesResult.innerHTML = tableauResult.length;
+          total = tableauResult.reduce((acc, entree) => acc + entree, 0);
+          sumEntriesResult.innerHTML = total;
+          maxEntriesResult.innerHTML = Math.max.apply(null, tableauResult);
+          minEntriesResult.innerHTML = Math.min.apply(null, tableauResult);
+          averageEntriesResult.innerHTML = (total / tableauResult.length).toFixed(2);
+          listOfEntriesResult.innerHTML = tableauResult.join(", ");
+          sequenceEntriesResult.innerHTML = longestSequence(tableauResult+1);
+        }
     }); 
 
     restart.addEventListener("click", () => {
-
         tableauResult.length = 0;
-        const tabResult = Array.from(entries.querySelectorAll(".result"));
-        tabResult.forEach((elt) => elt.innerHTML = "");
-
+        Array.from(results).forEach((elt) => elt.innerHTML = 0);
     });
 
 });
