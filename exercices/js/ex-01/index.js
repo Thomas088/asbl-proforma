@@ -16,8 +16,8 @@ window.addEventListener("DOMContentLoaded", function() {
     const tableauResult = [];
     const longestSequence = (arr) => {
 
-      let index = 0;
-      let arrTemp = [0];
+      let index = 0
+      let arrTemp = [0]
       // let longest = [];
       let lastValueInArrTemp;
 
@@ -27,25 +27,27 @@ window.addEventListener("DOMContentLoaded", function() {
     
         do {
     
-          lastValueInArrTemp = arrTemp[arrTemp.length - 1];
+          lastValueInArrTemp = arrTemp[arrTemp.length - 1]
           
               if(arr[index] < arr[index+1]) {
                 if(arr[index] > lastValueInArrTemp) {
-                  arrTemp.push(arr[index]);
+                  arrTemp.push(arr[index])
                 }
               }
           
               if(arr[index+1] < arr[index]) {
                 if(arr[index] > lastValueInArrTemp) {
-                  arrTemp.push(arr[index]);
+                  arrTemp.push(arr[index])
+                } else {
+                  arrTemp = [0];
                 }
               }
           
           index++;
-        } while(index < arr.length);
+        } while(index < arr.length)
         arrTemp.shift();
     
-      return arrTemp.join(", ");
+      return arrTemp.join(", ")
     }
 
 
