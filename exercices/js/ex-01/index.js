@@ -17,40 +17,37 @@ window.addEventListener("DOMContentLoaded", function() {
     const longestSequence = (arr) => {
 
       let index = 0;
-      let longest = [0];
-      let lastValueInLongest;
-      
-      do {
+      let arrTemp = [0];
+      // let longest = [];
+      let lastValueInArrTemp;
 
-        lastValueInLongest = longest[longest.length - 1];
-
-        if (arr.length > 0) {
-
-          if(arr[index+1] === undefined) {
-            return longest.join(", "); 
-          }
-            
-          if(arr[index] < arr[index+1]) {
-            if(arr[index] > lastValueInLongest) {
-              longest.push(arr[index]);
-            }
-          }
-      
-          if(arr[index+1] < arr[index]) {
-            if(arr[index] > lastValueInLongest) {
-              longest.push(arr[index]);
-            } else {
-              longest = [0];
-            }
-          }
-
-        }
-        
-        index++;
-      } while(index < arr.length);
-      longest.shift();
-      return longest.join(", ");
+      if (arr.length === 1) {
+        return arr.join("")
+      }
+    
+        do {
+    
+          lastValueInArrTemp = arrTemp[arrTemp.length - 1];
+          
+              if(arr[index] < arr[index+1]) {
+                if(arr[index] > lastValueInArrTemp) {
+                  arrTemp.push(arr[index]);
+                }
+              }
+          
+              if(arr[index+1] < arr[index]) {
+                if(arr[index] > lastValueInArrTemp) {
+                  arrTemp.push(arr[index]);
+                }
+              }
+          
+          index++;
+        } while(index < arr.length);
+        arrTemp.shift();
+    
+      return arrTemp.join(", ");
     }
+
 
     Array.from(results).forEach((elt) => elt.innerHTML = 0);
       
@@ -67,8 +64,11 @@ window.addEventListener("DOMContentLoaded", function() {
           minEntriesResult.innerHTML = Math.min.apply(null, tableauResult);
           averageEntriesResult.innerHTML = (total / tableauResult.length).toFixed(2);
           listOfEntriesResult.innerHTML = tableauResult.join(", ");
-          sequenceEntriesResult.innerHTML = longestSequence(tableauResult+1);
+          sequenceEntriesResult.innerHTML = longestSequence(tableauResult);
+        } else {
+          alert("Erreur : Inserer un nombre entier")
         }
+
     }); 
 
     restart.addEventListener("click", () => {
