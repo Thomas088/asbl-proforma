@@ -48,9 +48,9 @@ window.addEventListener("DOMContentLoaded", function() {
         }
 
         index++;
-      } while(index < arr.length)
-      arrTemp.shift()
-      return arrTemp.join(", ")
+      } while(index < arr.length);
+      arrTemp.shift();
+      return arrTemp.join(", ");
     }
       
     submit.addEventListener("click", () => {
