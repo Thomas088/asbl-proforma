@@ -15,7 +15,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const sequenceEntriesResult = document.querySelector(".sequence-entries-result");
     const tableauResult = [];
 
-    Array.from(results).forEach((elt) => elt.innerHTML = 0);
+    Array.from(results).forEach((result) => result.innerHTML = 0);
 
     const longestSequence = (arr) => {
 
