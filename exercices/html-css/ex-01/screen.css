@@ -1,0 +1,122 @@
+@charset 'UTF-8';
+/* GENERAL */
+:root {
+    text-rendering: optimizeLegibility;
+}
+
+html {
+    font-size: 14px;
+}
+
+body {
+    background-color: #fff;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+img {
+    object-fit: cover;
+}
+
+/* WRAPPER */
+
+.wrapper-large {
+    width: 85%;
+    max-width: 1280px;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* MOBILE */
+
+.main {
+    display: grid;
+    grid-template: 
+                        "sell-house"
+                        "new-construct"
+                        "manage-house"
+                        "invest-in-house"
+                        "avoid-bad-surprise"
+                        "house-spain";
+    grid-template-columns: 100%;
+    grid-template-rows: 31.25rem repeat(2, 62.5rem) repeat(2, 31.25rem) 62.5rem ;
+    grid-gap: 8px;
+    padding: 5rem 0;
+}
+
+.main div {
+    border: 1px solid #000;
+}
+
+.sell-house {
+ grid-area: "sell-house";
+}
+
+.new-construct {
+ grid-area: "new-construct";
+}
+
+.manage-house {
+ grid-area: "manage-house";
+}
+
+.invest-in-house {
+ grid-area: "invest-in-house";
+}
+
+.avoid-bad-surprise {
+ grid-area: "avoid-bad-surprise" ;    
+}
+
+.house-spain {
+ grid-area: "house-spain" ; 
+}
+
+
+/* MEDIA QUERIES */
+
+@media screen and (min-width: 800px) {
+
+    html {
+        font-size: 16px;
+    }
+
+    .main {
+        display: grid;
+        grid-template-areas: 
+                            "sell-house new-construct new-construct"
+                            "manage-house manage-house house-spain"
+                            "invest-in-house avoid-bad-surprise house-spain";
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 31.25rem);                    
+        grid-gap: 8px;
+        padding-top: 5rem;
+    }
+
+    .sell-house {
+        grid-column: 1;
+        grid-row: 1;
+    }
+       
+    .new-construct {
+        grid-column: span 2;
+    }
+    
+    .manage-house {
+        grid-column: span 2;
+       
+    }
+    
+    .invest-in-house {
+
+    }
+    
+    .avoid-bad-surprise {
+    }
+    
+    .house-spain {
+        grid-column: 3;
+        grid-row: row / 2 ; 
+    }
+
+}
