@@ -75,7 +75,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     restart.addEventListener("click", () => {
         tableauResult.length = 0;
-        Array.from(results).forEach((elt) => elt.innerHTML = 0);
+        Array.from(results).forEach((result) => result.innerHTML = 0);
     });
 
 });
