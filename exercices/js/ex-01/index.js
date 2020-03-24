@@ -1,5 +1,6 @@
 window.addEventListener("DOMContentLoaded", () => {
 
+    // INTERFACE 
     let entry;
     let total;
     const submit = document.querySelector(".submit-number");
@@ -15,8 +16,10 @@ window.addEventListener("DOMContentLoaded", () => {
     const sequenceEntriesResult = document.querySelector(".sequence-entries-result");
     const tableauResult = [];
 
+    // REMISE A ZERO
     Array.from(results).forEach((result) => result.innerHTML = 0);
 
+    // LONGEST INCREASING SEQUENCE 
     const longestSequence = (arr) => {
 
       let index = 0;
@@ -52,7 +55,8 @@ window.addEventListener("DOMContentLoaded", () => {
       arrTemp.shift();
       return arrTemp.join(", ");
     }
-      
+    
+    // CLICK ON 'SOUMETTRE'
     submit.addEventListener("click", () => {
 
         entry = parseInt(document.querySelector(".user-input").value);
@@ -68,11 +72,12 @@ window.addEventListener("DOMContentLoaded", () => {
           listOfEntriesResult.innerHTML = tableauResult.join(", ");
           sequenceEntriesResult.innerHTML = longestSequence(tableauResult);
         } else {
-          alert("Erreur : Inserer un nombre entier")
+          alert("Erreur : Inserer un nombre entier");
         }
 
     }); 
 
+    // RESET
     restart.addEventListener("click", () => {
         tableauResult.length = 0;
         Array.from(results).forEach((result) => result.innerHTML = 0);
