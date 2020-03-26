@@ -9,8 +9,7 @@ const rendu = montant => {
 
   } else {
 
-    let reminder,
-        billetDe500,
+    let billetDe500,
         billetDe200,
         billetDe100,
         billetDe50,
@@ -22,9 +21,12 @@ const rendu = montant => {
         piecesDe50,
         piecesDe20,
         piecesDe10,
-        piecesDe5;
-
-    reminder;
+        piecesDe05,
+        piecesDe02,
+        piecesDe01,
+        reminder,
+        cents;
+        
     // ON DIVISE EN BILLET DE 500
     billetDe500 = Math.floor(montant / 500);
 
@@ -57,16 +59,32 @@ const rendu = montant => {
     piecesDe1 = Math.floor(reminder / 1);
     reminder = reminder - piecesDe1 * 1;
 
+    // ON MULTIPLIE LE REMINDER PAR 100 POUR AVOIR LES CENTIMES EN ENTIER
+  
+    cents = Math.round(reminder * 100);
+
+    // ON REFAIT LA MEME OPERATION POUR LES CENTIMES
+
+    piecesDe50 = Math.floor(cents / 50);
+    cents = cents - piecesDe50 * 50;
+
+    piecesDe20 = Math.floor(cents / 20);
+    cents = cents - piecesDe20 * 20;
+
+    piecesDe10 = Math.floor(cents / 10);
+    cents = cents - piecesDe10 * 10;
+
+    piecesDe05 = Math.floor(cents / 5);
+    cents = cents - piecesDe05 * 5;
+
+    piecesDe02 = Math.floor(cents / 2);
+    cents = cents - piecesDe02 * 2;
+
+    piecesDe01 = Math.floor(cents / 1);
+    cents = cents - piecesDe01 * 1;
+
+
     
-
-    // piecesDe50cent = Math.floor(reminder / 0.5);
-    // reminder = reminder - piecesDe50cents * 0.5;
-
-    // piecesDe20cent = Math.floor(reminder / 0.2);
-    // reminder = reminder - piecesDe50cents * 0.2;
-
-    // piecesDe10cent = Math.floor(reminder / 0.5);
-    // reminder = reminder - piecesDe50cents * 0.5;
 
 
 
@@ -81,8 +99,15 @@ const rendu = montant => {
                        ${billetDe5} billets de 5 euros,<br>
                        ${piecesDe2} pieces de 2 euros,<br>
                        ${piecesDe1} pieces de 1 euros<br> 
-                     
-                       
+                       <br><br>
+                       ET 
+                       <br><br>
+                       ${piecesDe50} pieces de 50 centimes<br>
+                       ${piecesDe20} pieces de 20 centimes<br>
+                       ${piecesDe10} pieces de 10 centimes<br>
+                       ${piecesDe05} pieces de 5 centimes<br>
+                       ${piecesDe02} pieces de 2 centimes<br>
+                       ${piecesDe01} pieces de 1 centimes<br>
                        `;
   }
 };
