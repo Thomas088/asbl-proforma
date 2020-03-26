@@ -6,6 +6,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const restart = document.querySelector(".reset");
 
   // SAUF VALUE CAR LA SOMME ENTRE PAR L'UTILISATEUR PEUT ETRE VARIABLE
+
   let value;
 
   document.querySelector(".input").innerHTML = "";
@@ -13,6 +14,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const rendu = montant => {
 
     // SI LE TYPE DU MONTANT EST DIFFERENT 
+
     if (isNaN(montant) || montant === 0) {
 
       return resultat.innerHTML = "Erreur : Entrer un montant valide";
@@ -39,7 +41,7 @@ window.addEventListener("DOMContentLoaded", () => {
           reminder,
           cents;
           
-      // ON DIVISE EN BILLET DE 500
+      // ON DIVISE EN BILLETS DE 500
 
       billetDe500 = Math.floor(montant / 500);
 
@@ -75,6 +77,7 @@ window.addEventListener("DOMContentLoaded", () => {
       reminder = reminder - piecesDe1 * 1;
 
       // ON MULTIPLIE LE REMINDER PAR 100 POUR AVOIR LES CENTIMES EN ENTIER
+      // ON UTILISE MATH.ROUND() CETTE FOIS CI POUR NE PAS PERDRE UN CENTIME...😅 
     
       cents = Math.round(reminder * 100);
 
@@ -128,6 +131,7 @@ window.addEventListener("DOMContentLoaded", () => {
     resultat.innerHTML = rendu(value);
   });
 
+  // RECOMMENCER
   restart.addEventListener("click", () => {
     resultat.innerHTML = "";
   });
