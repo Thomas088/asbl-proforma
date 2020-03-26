@@ -1,14 +1,22 @@
 window.addEventListener("DOMContentLoaded", () => {
 
+  // LES ELEMENTS DU DOM SONT DECLARES AVEC CONST CAR ELEMENTS FIXE
   const submit = document.querySelector(".submit");
   const resultat = document.querySelector(".resultat");
+  const restart = document.querySelector(".reset");
+
+  // SAUF VALUE CAR LA SOMME ENTRE PAR L'UTILISATEUR PEUT ETRE VARIABLE
   let value;
+
+  document.querySelector(".input").innerHTML = "";
 
   const rendu = montant => {
 
     // SI LE TYPE DU MONTANT EST DIFFERENT 
-    if (isNaN(montant)) {
+    if (isNaN(montant) || montant === 0) {
+
       return resultat.innerHTML = "Erreur : Entrer un montant valide";
+
     } else {
 
       // DECLARATION DES VARIABLES
@@ -35,13 +43,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
       billetDe500 = Math.floor(montant / 500);
 
-      // ON GARDE LE RESTE
+      // ON GARDE LE RESTE (MODULO)
 
       reminder = montant % 500;
 
-      // LE RESTE EST UTILISE TOUT LE LONG DE LA SEQUENCE DESCENDANTE EN FONCTION DE LA MONNAIE 
-      billetDe200 = Math.floor(reminder / 200);
+      // LE RESTE EST UTILISE TOUT LE LONG DE LA SEQUENCE DESCENDANTE 
+      // AVEC LES MEMES OPERATIONS EN FONCTION DU TYPE DE MONNAIE
 
+      billetDe200 = Math.floor(reminder / 200);
       reminder = reminder - billetDe200 * 200;
 
       billetDe100 = Math.floor(reminder / 100);
@@ -89,31 +98,38 @@ window.addEventListener("DOMContentLoaded", () => {
       piecesDe01 = Math.floor(cents / 1);
       cents = cents - piecesDe01 * 1;
 
-      return `Je vous dois <br>
+      return `<b>Je vous dois</b> 
                         <br>
-                        ${billetDe500} billets de 500 euros,<br>
-                        ${billetDe200} billets de 200 euros,<br>
-                        ${billetDe100} billets de 100 euros,<br>
-                        ${billetDe50} billets de 50 euros,<br>
-                        ${billetDe20} billets de 20 euros,<br>
-                        ${billetDe10} billets de 10 euros,<br>
-                        ${billetDe5} billets de 5 euros,<br>
-                        ${piecesDe2} pieces de 2 euros,<br>
-                        ${piecesDe1} pieces de 1 euros<br> 
+                        <br>
+                        <b>${billetDe500}</b> billet(s) de 500 euros,<br>
+                        <b>${billetDe200}</b> billet(s) de 200 euros,<br>
+                        <b>${billetDe100}</b> billet(s) de 100 euros,<br>
+                        <b>${billetDe50}</b> billet(s) de 50 euros,<br>
+                        <b>${billetDe20}</b> billet(s) de 20 euros,<br>
+                        <b>${billetDe10}</b> billet(s) de 10 euros,<br>
+                        <b>${billetDe5}</b> billet(s) de 5 euros,<br>
+                        <b>${piecesDe2}</b> piece(s) de 2 euros,<br>
+                        <b>${piecesDe1}</b> piece(s) de 1 euro<br> 
                         <br><br>
-                        ET 
+                        <b>et</b>
                         <br><br>
-                        ${piecesDe50} pieces de 50 centimes<br>
-                        ${piecesDe20} pieces de 20 centimes<br>
-                        ${piecesDe10} pieces de 10 centimes<br>
-                        ${piecesDe05} pieces de 5 centimes<br>
-                        ${piecesDe02} pieces de 2 centimes<br>
-                        ${piecesDe01} pieces de 1 centimes<br>`;
+                        <b>${piecesDe50}</b> piece(s) de 50 centimes<br>
+                        <b>${piecesDe20}</b> piece(s) de 20 centimes<br>
+                        <b>${piecesDe10}</b> piece(s) de 10 centimes<br>
+                        <b>${piecesDe05}</b> piece(s) de 5 centimes<br>
+                        <b>${piecesDe02}</b> piece(s) de 2 centimes<br>
+                        <b>${piecesDe01}</b> piece(s) de 1 centime<br>`;
     }
   };
 
+  // QUAND L'UTILISATEUR VALIDE LE MONTANT 
   submit.addEventListener("click", () => {
     value = Number(document.querySelector(".input").value);
     resultat.innerHTML = rendu(value);
   });
+
+  restart.addEventListener("click", () => {
+    resultat.innerHTML = "";
+  });
+
 });

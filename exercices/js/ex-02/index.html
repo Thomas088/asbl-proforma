@@ -4,18 +4,24 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="./css/styles.css">
-    <title>Rendu monnaie</title>
     <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <title>Rendu monnaie</title>
   </head>
 
   <body>
 
     <div>
-      <input type="text" class="input">
-      <input class="submit" type="submit" value="Rendre monnaie">
+      <h1>Rendu Monnaie</h1>
+      <!-- L'ENTREE UTILISATEUR -->
+      <input type="text" class="input" placeholder="Entrer valeur...">
+      <div class="commands">
+        <!-- LES COMMANDES -->
+        <input class="submit" type="submit" value="Rendre monnaie">
+        <input class="reset" type="submit" value="Recommencer">
+      </div>
     </div>
-    
+    <!-- LE RESULTAT -->
     <div class="resultat"></div>
 
 
