@@ -134,14 +134,3 @@ document.forms[8].b2.addEventListener('click', () => {
 
 document.forms[9].ch1.value = "";
 document.forms[9].ch2.value = "";
-
-switch (document.querySelector('[name=\"s1\"]').selectedOptions) {
-    
-    case 2:
-        document.forms[9].ch1.value = "t";
-        document.forms[9].ch2.value = "t";
-    break;
-
-}
-
-console.log(collection)
