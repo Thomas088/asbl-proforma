@@ -13,18 +13,19 @@ document.forms[1].ch1.addEventListener('focus', () => {
 document.forms[1].ch1.addEventListener('blur', () => {
     
     ((e) => {
+
         if(e.ch1.value === "") {
             e.ch1.value = "Texte initial";
         }
+
     })(document.forms[1]);
 
 });
 
 // La taille augmente lorsque l'on appuye sur une touche et qu'on est dedans
 
-document.forms[2].ch1.addEventListener('focus', () => {
-    document.forms[2].ch1.value="";
-});
+document.forms[2].ch1.value = "";
+
 
 document.forms[2].ch1.addEventListener('keydown', () => {  
     document.forms[2].ch1.size++;
@@ -35,11 +36,13 @@ document.forms[2].ch1.addEventListener('keydown', () => {
 document.forms[3].cb1.addEventListener('click', () => { 
 
     ((e) => {
+
         if(e.ch1.type === "password") {     
             e.ch1.type = "text";
         } else {
             e.ch1.type = "password";
         }
+
     })(document.forms[3]);
 });
 
@@ -74,17 +77,25 @@ document.forms[6].ch1.addEventListener('focus', () => {
 })
 
 document.forms[6].cb1.addEventListener('click', () => {
-    if(document.forms[6].cb1.checked) {
-        document.forms[6].ch1.focus();
-        document.forms[6].ch1.value = '0';
-    } else {
-        document.forms[6].ch1.value = '';
-    }
+
+    ((e) => {
+
+        if(e.cb1.checked) {
+            e.ch1.focus();
+            e.ch1.value = '0';
+        } else {
+            e.ch1.value = '';
+        }
+    
+    })(document.forms[6])
+    
 })
 
 // Un champ non modifiable qui s'incrémente ou se décrémente selon l'option sélectionnée
 
 let entryForm7;
+
+document.forms[7].ch1.setAttribute("readonly" , "");
 
 document.forms[7].ch1.value = 0;
 
@@ -103,20 +114,34 @@ document.forms[7].b1.addEventListener('click', () => {
 // Le bouton "sauve" place la valeur actuelle du champ comme valeur par défaut.
 // Le bouton "reset" fait son boulot...
 
-document.forms[7].ch1.value = "";
 
 let entryForm8
 
 document.forms[8].b1.addEventListener('click', () => {
 
-    entryForm8 = document.forms[7].ch1.value;
-    document.forms[7].ch1.defaultValue = entryForm8;
+    document.forms[8].ch1.defaultValue = "";
+    entryForm8 = document.forms[8].ch1.value;
+    document.forms[8].ch1.defaultValue = entryForm8;
 
 })
 
 document.forms[8].b2.addEventListener('click', () => {
-
+    document.forms[8].ch1.value = document.forms[8].ch1.defaultValue;
 })
 
 
+// Place la valeur et le texte de l'option sélectionnée à l'intérieur des champs correspondants
+
+document.forms[9].ch1.value = "";
+document.forms[9].ch2.value = "";
+
+switch (document.querySelector('[name=\"s1\"]').selectedOptions) {
     
+    case 2:
+        document.forms[9].ch1.value = "t";
+        document.forms[9].ch2.value = "t";
+    break;
+
+}
+
+console.log(collection)
