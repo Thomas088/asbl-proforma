@@ -200,3 +200,21 @@ document.forms[11].gauche.addEventListener('click', () => {
 document.forms[11].droite.addEventListener('click', () => {
     pressRight();
 })
+
+// Faire basculer les items sélectionnés entre les deux listes.
+
+const list1 = document.forms[12].querySelector('select:first-of-type');
+const list2 = document.forms[12].querySelector('select:nth-of-type(2)');
+const options = Array.from(document.forms[12].querySelectorAll('option'));
+
+document.forms[12].gauche.addEventListener('click', () => {
+
+    options.forEach((option) => option.selected ? list1.append(option) : 0);
+   
+})
+
+document.forms[12].droite.addEventListener('click', () => {
+
+        options.forEach((option) => option.selected ? list2.append(option) : 0);
+        
+})
