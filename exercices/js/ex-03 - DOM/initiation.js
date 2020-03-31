@@ -1,58 +1,33 @@
 // Se vide lorsque l'on entre dedans
 
-document.forms[0].ch1.addEventListener('focus', () => {        
-    document.forms[0].ch1.value="";
-});
+document.forms[0].ch1.addEventListener('focus', () => document.forms[0].ch1.value="");
 
 // Se vide lorsque l'on entre dedans et qui remet la valeur initiale si le champ est vide lorsqu'on le quitte
 
-document.forms[1].ch1.addEventListener('focus', () => {
-    document.forms[1].ch1.value="";
-});
+document.forms[1].ch1.addEventListener('focus', () => document.forms[1].ch1.value="");
 
-document.forms[1].ch1.addEventListener('blur', () => {
-    
-    ((e) => {
-        e.ch1.value === "" ? e.ch1.value = "Texte initial" : 0;
-    })(document.forms[1])
-
-})
+document.forms[1].ch1.addEventListener('blur', () => ((e) => e.ch1.value === "" ? e.ch1.value = "Texte initial" : 0)(document.forms[1]))
 
 // La taille augmente lorsque l'on appuye sur une touche et qu'on est dedans
 
 document.forms[2].ch1.value = "";
 
-document.forms[2].ch1.addEventListener('keydown', () => {  
-    document.forms[2].ch1.size++
-});
+document.forms[2].ch1.addEventListener('keydown', () => document.forms[2].ch1.size++);
 
 // Affiche les caractères quand la case est cochée, les masque sinon
 
-document.forms[3].cb1.addEventListener('click', () => { 
-
-    ((e) => {
-        e.ch1.type === "password" ? e.ch1.type = "text" : e.ch1.type = "password";        
-        }
-    )(document.forms[3])
-
-});
+document.forms[3].cb1.addEventListener('click', () => ((e) => e.ch1.type === "password" ? e.ch1.type = "text" : e.ch1.type = "password")(document.forms[3]));
 
 // Affiche les caractères quand on maintient la souris enfoncé sur le carré, les masque sinon
 
 
-document.forms[4].querySelector('.enfonce').addEventListener('mousedown', () => { 
-    document.forms[4].ch1.type = "text";
-});
+document.forms[4].querySelector('.enfonce').addEventListener('mousedown', () => document.forms[4].ch1.type = "text");
 
-document.forms[4].querySelector('.enfonce').addEventListener('mouseup', () => {     
-    document.forms[4].ch1.type = "password";  
-});
+document.forms[4].querySelector('.enfonce').addEventListener('mouseup', () => document.forms[4].ch1.type = "password");
 
 // Jete le focus quand essaye de lui donner
 
-document.forms[5].ch1.addEventListener('focus', () => {     
-    document.forms[5].ch1.blur();  
-})
+document.forms[5].ch1.addEventListener('focus', () => document.forms[5].ch1.blur())
 
 /* Jete le focus quand essaye de lui donner et que la case à cochée n'est pas activée.
 Si le champ est rempli et que l'on décoche la case, on vide le champ.
@@ -63,9 +38,7 @@ Si on coche la case, on amène le focus dans le champ, et on place la valeur 0; 
 document.forms[6].cb1.checked = false;
 document.forms[6].ch1.value = "";
 
-document.forms[6].ch1.addEventListener('focus', () => {
-    document.forms[6].ch1.blur();
-})
+document.forms[6].ch1.addEventListener('focus', () => document.forms[6].ch1.blur())
 
 document.forms[6].cb1.addEventListener('click', () => {
 
@@ -114,9 +87,7 @@ document.forms[8].b1.addEventListener('click', () => {
 
 })
 
-document.forms[8].b2.addEventListener('click', () => {
-    document.forms[8].ch1.value = document.forms[8].ch1.defaultValue;
-})
+document.forms[8].b2.addEventListener('click', () => document.forms[8].ch1.value = document.forms[8].ch1.defaultValue)
 
 
 // Place la valeur et le texte de l'option sélectionnée à l'intérieur des champs correspondants
@@ -174,7 +145,7 @@ const pressLeft = () => {
     document.querySelector('.data-controls > input:nth-of-type(3)').value = input4;
     document.querySelector('.data-controls > input:nth-of-type(4)').value = input5;
     document.querySelector('.data-controls > input:last-of-type').value = input1;
-;
+
 }
 
 const pressRight = () => {
@@ -193,13 +164,9 @@ const pressRight = () => {
 }
 
 
-document.forms[11].gauche.addEventListener('click', () => {
-    pressLeft();
-})
+document.forms[11].gauche.addEventListener('click', () => pressLeft())
 
-document.forms[11].droite.addEventListener('click', () => {
-    pressRight();
-})
+document.forms[11].droite.addEventListener('click', () => pressRight())
 
 // Faire basculer les items sélectionnés entre les deux listes.
 
@@ -207,14 +174,67 @@ const list1 = document.forms[12].querySelector('select:first-of-type');
 const list2 = document.forms[12].querySelector('select:nth-of-type(2)');
 const options = Array.from(document.forms[12].querySelectorAll('option'));
 
-document.forms[12].gauche.addEventListener('click', () => {
+document.forms[12].gauche.addEventListener('click', () => options.forEach((option) => option.selected ? list1.append(option) : 0))
 
-    options.forEach((option) => option.selected ? list1.append(option) : 0);
-   
+document.forms[12].droite.addEventListener('click', () => options.forEach((option) => option.selected ? list2.append(option) : 0))
+
+// 3 Champs de 5 caractères qui ne sont accesibles que si les champs précédents sont remplis(genre entrée de clé)
+
+let form14Input1 = document.querySelector('div:nth-of-type(14) input:first-of-type');
+let form14Input2 = document.querySelector('div:nth-of-type(14) input:nth-of-type(2)');
+let form14Input3 = document.querySelector('div:nth-of-type(14) input:last-of-type');
+
+form14Input2.disabled = true;
+form14Input3.disabled = true;
+
+form14Input1.addEventListener('keyup', () => {
+
+    form14Input1 = document.querySelector('div:nth-of-type(14) input:first-of-type');
+    form14Input2 = document.querySelector('div:nth-of-type(14) input:nth-of-type(2)');
+
+    if(form14Input1.value.length < 5) {
+        form14Input2.disabled = true;
+        form14Input3.disabled = true;
+    } else if(form14Input1.value.length === 5 && form14Input2.value.length < 5) {
+        form14Input2.disabled = false;
+        form14Input2.focus();
+        form14Input3.disabled = true;
+    }
+
 })
 
-document.forms[12].droite.addEventListener('click', () => {
+form14Input2.addEventListener('keyup', () => {
 
-        options.forEach((option) => option.selected ? list2.append(option) : 0);
-        
+    form14Input2 = document.querySelector('div:nth-of-type(14) input:nth-of-type(2)');
+    form14Input3 = document.querySelector('div:nth-of-type(14) input:last-of-type');
+
+    if(form14Input2.value.length < 5) {
+        form14Input3.disabled = true;
+    } else {
+        form14Input3.disabled = false;
+        form14Input3.focus();
+    }
+})
+
+// Elément qui disparait lorsque l'on coche la case. Il réapparait lorsque l'on décoche(style.display)
+
+document.querySelector('div:nth-of-type(15) input[type=\"checkbox\"]').addEventListener('click', () => {
+    
+    document.querySelector('div:nth-of-type(15) input[type=\"checkbox\"]').checked ?
+    document.querySelector('div:nth-of-type(15) input[type=\"text\"]').style.display = "none" :
+    document.querySelector('div:nth-of-type(15) input[type=\"text\"]').style.display = "block";
+    
+})
+
+// Un champ qui augmente en hauteur et en largeur de 1OOpx à chaque fois que l'on entre le focus dedans (parseInt() et style.height). Il retourne à son état initial en sortant.
+
+
+document.querySelector('div:nth-of-type(16) input').addEventListener('focus', () => {
+    document.querySelector('div:nth-of-type(16) input').style.width += parseInt("100px"); 
+})
+
+
+
+document.querySelector('div:nth-of-type(16) input').addEventListener('blur', () => {
+    document.querySelector('div:nth-of-type(16) input').size -= 100;
 })
