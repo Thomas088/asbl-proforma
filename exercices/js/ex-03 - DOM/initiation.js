@@ -13,11 +13,7 @@ document.forms[1].ch1.addEventListener('focus', () => {
 document.forms[1].ch1.addEventListener('blur', () => {
     
     ((e) => {
-
-        if(e.ch1.value === "") {
-            e.ch1.value = "Texte initial";
-        }
-
+        e.ch1.value === "" ? e.ch1.value = "Texte initial" : 0;
     })(document.forms[1]);
 
 });
@@ -25,7 +21,6 @@ document.forms[1].ch1.addEventListener('blur', () => {
 // La taille augmente lorsque l'on appuye sur une touche et qu'on est dedans
 
 document.forms[2].ch1.value = "";
-
 
 document.forms[2].ch1.addEventListener('keydown', () => {  
     document.forms[2].ch1.size++;
@@ -36,14 +31,10 @@ document.forms[2].ch1.addEventListener('keydown', () => {
 document.forms[3].cb1.addEventListener('click', () => { 
 
     ((e) => {
-
-        if(e.ch1.type === "password") {     
-            e.ch1.type = "text";
-        } else {
-            e.ch1.type = "password";
+        e.ch1.type === "password" ? e.ch1.type = "text" : e.ch1.type = "password";        
         }
+    )(document.forms[3]);
 
-    })(document.forms[3]);
 });
 
 // Affiche les caractères quand on maintient la souris enfoncé sur le carré, les masque sinon
@@ -79,14 +70,12 @@ document.forms[6].ch1.addEventListener('focus', () => {
 document.forms[6].cb1.addEventListener('click', () => {
 
     ((e) => {
-
         if(e.cb1.checked) {
             e.ch1.focus();
             e.ch1.value = '0';
         } else {
             e.ch1.value = '';
-        }
-    
+        } 
     })(document.forms[6])
     
 })
@@ -103,11 +92,9 @@ document.forms[7].b1.addEventListener('click', () => {
 
     entryForm7 = Number(document.forms[7].ch1.value);
 
-    if(document.querySelector("#rb1_1").checked) {
-        document.forms[7].ch1.value = entryForm7 + 1;
-    } else if(document.querySelector("#rb1_2").checked) {
-        document.forms[7].ch1.value = entryForm7 - 1;
-    }
+    ((e) => {
+        document.querySelector("#rb1_1").checked ? e.ch1.value = entryForm7 + 1 : document.querySelector("#rb1_2").checked ? e.ch1.value = entryForm7 - 1 : 0;
+    })(document.forms[7])
     
 })
 
@@ -119,9 +106,11 @@ let entryForm8
 
 document.forms[8].b1.addEventListener('click', () => {
 
-    document.forms[8].ch1.defaultValue = "";
-    entryForm8 = document.forms[8].ch1.value;
-    document.forms[8].ch1.defaultValue = entryForm8;
+    ((e) => {
+        e.ch1.defaultValue = "";
+        entryForm8 = e.ch1.value;
+        e.ch1.defaultValue = entryForm8;
+    })(document.forms[8])
 
 })
 
@@ -134,3 +123,11 @@ document.forms[8].b2.addEventListener('click', () => {
 
 document.forms[9].ch1.value = "";
 document.forms[9].ch2.value = "";
+
+  Array.from(document.forms[9].s1.selectedOptions).forEach((option) => {
+
+
+
+  })
+
+console.log(Array.from(document.forms[9].s1.selectedOptions))
