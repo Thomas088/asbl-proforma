@@ -230,11 +230,13 @@ document.querySelector('div:nth-of-type(15) input[type=\"checkbox\"]').addEventL
 
 
 document.querySelector('div:nth-of-type(16) input').addEventListener('focus', () => {
-    document.querySelector('div:nth-of-type(16) input').style.width += parseInt("100px"); 
+    document.querySelector('div:nth-of-type(16) input').style.width = "200px";
+    document.querySelector('div:nth-of-type(16) input').style.height = "200px"; 
 })
 
 
 
 document.querySelector('div:nth-of-type(16) input').addEventListener('blur', () => {
-    document.querySelector('div:nth-of-type(16) input').size -= 100;
+    document.querySelector('div:nth-of-type(16) input').style.width = "160px";
+    document.querySelector('div:nth-of-type(16) input').style.height = "16px"; 
 })
