@@ -138,4 +138,65 @@ document.forms[9].addEventListener("change", () => {
 
 // Place les valeurs et les textes des options sélectionnées à l'intérieur des champs correspondants
 
+document.forms[10].ch1.value = "";
+document.forms[10].ch2.value = "";
 
+document.forms[10].addEventListener("change", () => {
+
+      ((e) => {    
+      Array.from(e.s1.options).forEach((option) => {
+        if(option.selected) {
+            e.ch1.value = option.value;
+            e.ch2.value = option.text;
+        }
+      }) 
+    } )(document.forms[10])
+})
+
+// Permutte les valeurs des différents champs dans le sens de la flèche (en boucle)
+
+let input1;
+let input2; 
+let input3; 
+let input4; 
+let input5;
+
+const pressLeft = () => {
+  
+    input1 = document.querySelector('.data-controls > input:first-of-type').value;
+    input2 = document.querySelector('.data-controls > input:nth-of-type(2)').value;
+    input3 = document.querySelector('.data-controls > input:nth-of-type(3)').value;
+    input4 = document.querySelector('.data-controls > input:nth-of-type(4)').value;
+    input5 = document.querySelector('.data-controls > input:last-of-type').value;
+
+    document.querySelector('.data-controls > input:first-of-type').value = input2;
+    document.querySelector('.data-controls > input:nth-of-type(2)').value = input3;
+    document.querySelector('.data-controls > input:nth-of-type(3)').value = input4;
+    document.querySelector('.data-controls > input:nth-of-type(4)').value = input5;
+    document.querySelector('.data-controls > input:last-of-type').value = input1;
+;
+}
+
+const pressRight = () => {
+
+    input1 = document.querySelector('.data-controls > input:first-of-type').value;
+    input2 = document.querySelector('.data-controls > input:nth-of-type(2)').value;
+    input3 = document.querySelector('.data-controls > input:nth-of-type(3)').value;
+    input4 = document.querySelector('.data-controls > input:nth-of-type(4)').value;
+    input5 = document.querySelector('.data-controls > input:last-of-type').value;
+
+    document.querySelector('.data-controls > input:first-of-type').value = input5;
+    document.querySelector('.data-controls > input:nth-of-type(2)').value = input1;
+    document.querySelector('.data-controls > input:nth-of-type(3)').value = input2;
+    document.querySelector('.data-controls > input:nth-of-type(4)').value = input3;
+    document.querySelector('.data-controls > input:last-of-type').value = input4;
+}
+
+
+document.forms[11].gauche.addEventListener('click', () => {
+    pressLeft();
+})
+
+document.forms[11].droite.addEventListener('click', () => {
+    pressRight();
+})
