@@ -33,25 +33,25 @@ document.forms[5].ch1.addEventListener('focus', () => document.forms[5].ch1.blur
 Si le champ est rempli et que l'on décoche la case, on vide le champ.
 Si on coche la case, on amène le focus dans le champ, et on place la valeur 0; */
 
-// !!!! Voir pour blur()
 
 document.forms[6].cb1.checked = false;
 document.forms[6].ch1.value = "";
 
-document.forms[6].ch1.addEventListener('focus', () => document.forms[6].ch1.blur())
+   (!document.forms[6].ch1.checked) ? document.forms[6].ch1.addEventListener('click', () => document.forms[6].ch1.blur()) : 0;
 
-document.forms[6].cb1.addEventListener('click', () => {
-
-    ((e) => {
-        if(e.cb1.checked) {
-            e.ch1.focus();
-            e.ch1.value = '0';
-        } else {
-            e.ch1.value = '';
-        } 
-    })(document.forms[6])
-    
+    document.forms[6].cb1.addEventListener('click', () => {
+         
+        ((e) => {
+            if(e.cb1.checked) {
+                e.ch1.focus();
+                e.ch1.value = 0;
+            } else {
+                e.ch1.value = "";
+                e.ch1.blur();
+            }
+        })(document.forms[6])            
 })
+
 
 // Un champ non modifiable qui s'incrémente ou se décrémente selon l'option sélectionnée
 
