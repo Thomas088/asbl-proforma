@@ -263,9 +263,9 @@ arrayCarre2.forEach((carre) => {
     carre.addEventListener('click', () => {
         arrayCarre2.map((allCarre) => allCarre.classList.remove('checked'));
         carre.classList.add('checked');
-        let getColor = carre.getAttribute('data-color');
+        const getColor = carre.getAttribute('data-color');
         document.querySelector('#out').classList.remove('rouge', 'vert', 'bleu', 'jaune');
         document.querySelector('#out').classList.add(getColor);
+        document.querySelector('#out').setAttribute('data-color', getColor);
     })
-
 })
