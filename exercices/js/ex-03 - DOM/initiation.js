@@ -230,13 +230,42 @@ document.querySelector('div:nth-of-type(15) input[type=\"checkbox\"]').addEventL
 
 
 document.querySelector('div:nth-of-type(16) input').addEventListener('focus', () => {
-    document.querySelector('div:nth-of-type(16) input').style.width = "200px";
-    document.querySelector('div:nth-of-type(16) input').style.height = "200px"; 
+    document.querySelector('div:nth-of-type(16) input').style.width = "260px";
+    document.querySelector('div:nth-of-type(16) input').style.height = "116px"; 
 })
 
 
 
 document.querySelector('div:nth-of-type(16) input').addEventListener('blur', () => {
-    document.querySelector('div:nth-of-type(16) input').style.width = "160px";
+    document.querySelector('div:nth-of-type(16) input').style.width = "170px";
     document.querySelector('div:nth-of-type(16) input').style.height = "16px"; 
+})
+
+// Soit 4 carrés de couleur. Si on clique sur un on lui ajoute la classe checked et on l'enlève à celui qui l'avait
+
+const arrayCarre = Array.from(document.querySelectorAll('div:nth-of-type(17) > div div'));
+
+arrayCarre.forEach((carre) => {
+
+    carre.addEventListener('click', () => {
+        arrayCarre.map((allCarre) => allCarre.classList.remove('checked'));
+        carre.classList.add('checked');
+    })
+
+})
+
+// Idem que le précédent mais on ajoute aussi la classe de couleur à un autre carré.(setAttribute(),getAttribute()))
+
+const arrayCarre2 = Array.from(document.querySelectorAll('div:nth-of-type(18) > div div'));
+
+arrayCarre2.forEach((carre) => {
+
+    carre.addEventListener('click', () => {
+        arrayCarre2.map((allCarre) => allCarre.classList.remove('checked'));
+        carre.classList.add('checked');
+        let getColor = carre.getAttribute('data-color');
+        document.querySelector('#out').classList.remove('rouge', 'vert', 'bleu', 'jaune');
+        document.querySelector('#out').classList.add(getColor);
+    })
+
 })
