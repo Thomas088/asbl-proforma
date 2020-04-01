@@ -264,8 +264,20 @@ arrayCarre2.forEach((carre) => {
         arrayCarre2.map((allCarre) => allCarre.classList.remove('checked'));
         carre.classList.add('checked');
         const getColor = carre.getAttribute('data-color');
-        document.querySelector('#out').classList.remove('rouge', 'vert', 'bleu', 'jaune');
-        document.querySelector('#out').classList.add(getColor);
-        document.querySelector('#out').setAttribute('data-color', getColor);
+        const carreResult = document.querySelector('#out');
+        carreResult.classList.remove('rouge', 'vert', 'bleu', 'jaune');
+        carreResult.classList.add(getColor);
+        carreResult.setAttribute('data-color', getColor);
     })
+})
+
+// **BONUS**
+
+// on porte l'image de gauche dans la zone de droite
+
+const leftImage = document.querySelector('[name=\"i4\"]');
+
+leftImage.addEventListener('click', () => {
+    leftImage.style.position = "relative";
+    leftImage.style.left = "800px";
 })
