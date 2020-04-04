@@ -45,7 +45,7 @@ document.forms[6].ch1.value = "";
             if(e.cb1.checked) {
                 e.ch1.focus();
                 e.ch1.value = 0;
-                e.ch1.addEventListener("focus", () => document.forms[6].ch1.focus())
+                e.ch1.addEventListener("focus", () => document.forms[6].ch1.focus());
             } else {
                 e.ch1.value = "";
                 e.ch1.blur();
