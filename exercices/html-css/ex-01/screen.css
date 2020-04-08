@@ -18,6 +18,21 @@ body {
     background: whitesmoke;
 }
 
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.ico {
+    width: 4rem;
+    height: 4rem;
+}
+
+
+img {
+    position: relative;
+}
+
 .sell-house__img, 
 .new-construct__img, 
 .manage-house__img,
@@ -68,11 +83,16 @@ h1 {
     grid-column: 1;
     grid-template-columns: 100%;
     grid-template-rows: repeat(5, 31.25rem) 62.5rem;
-    grid-gap: 8px;
+    grid-gap: 14px;
     padding: 5rem 0;
 }
 
-.main div {
+.sell-house,
+.new-construct,
+.manage-house, 
+.invest-in-house,
+.avoid-bad-surprise,
+.house-spain {
     position: relative;
 }
 
@@ -98,6 +118,82 @@ h1 {
 
 .house-spain {
     grid-area: "house-spain" ; 
+}
+
+/* SAILS */
+
+.sail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+}
+
+.sell-house__sail,
+.new-construct__sail,
+.manage-house__sail, 
+.invest-in-house__sail,
+.avoid-bad-surprise__sail {
+    width: 100%;
+    height: 31.25rem;
+    text-align: center;
+}
+
+.sell-house__sail {
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.new-construct__sail {
+    width: 100%;
+    height: 31.25rem;
+    color:rgb(255, 255, 255);
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.new-construct__sail > .sail-content {
+    position: relative;
+    bottom: 2rem;
+    left: 1.5rem;
+    background: rgba(155, 155, 155, 0.5);
+    padding: 0.3rem;
+}
+
+.manage-house__sail {
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.invest-in-house__sail {
+    background: rgba(169,137,101, 0.85);
+    color:rgb(255, 255, 255);
+}
+
+.avoid-bad-surprise__sail {
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.house-spain {
+    /* display: flex;
+    justify-content: center;
+    align-items: flex-end; */
+}
+
+.house-spain > .sail-content {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0.5rem;
+    position: absolute;
+    bottom: 2rem;
+    left: 1.5rem;
+    color: white;
+    background: rgba(155, 155, 155, 0.5);
+}
+
+.house-spain > .sail-content h2 {
+    margin-top: 0;
+    padding-top:0;
 }
 
 
@@ -141,4 +237,10 @@ h1 {
         grid-row: row / 2; 
     }
 
+    .manage-house__sail {
+        width: 24.25rem;
+        height: 24.25rem;
+        margin: 3.5rem 0 0 1.5rem;
+    }
+    
 }
