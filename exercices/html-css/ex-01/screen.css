@@ -24,6 +24,14 @@ img {
     object-fit: cover;
 }
 
+h1 {
+    text-align: center;
+}
+
+.container___title {
+    margin-top: 5rem;
+}
+
 
 /* WRAPPER */
 
