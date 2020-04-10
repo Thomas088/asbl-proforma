@@ -36,7 +36,7 @@ window.addEventListener("DOMContentLoaded", () => {
                         tempArr.push(arr[i]);
                     } else {
                         // Vérification de la dernière valeur du tableau
-                        if(arr[i + 1] === undefined && arr[i] > tempArr[tempArr.length - 1]) { // ON LAST VALUE 
+                        if(arr[i + 1] === undefined && arr[i] > tempArr[tempArr.length - 1]) {
                                 tempArr.push(arr[i]);
                                 lastSequence = [...tempArr]; 
                         }
