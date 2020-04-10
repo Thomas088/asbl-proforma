@@ -1,8 +1,6 @@
 window.addEventListener("DOMContentLoaded", () => {
 
     // INTERFACE 
-    let entry;
-    let total;
     const submit = document.querySelector(".submit-number");
     const restart = document.querySelector(".restart");
     const entries = document.querySelector(".entries");
@@ -14,30 +12,55 @@ window.addEventListener("DOMContentLoaded", () => {
     const averageEntriesResult = document.querySelector(".average-entries-result");
     const listOfEntriesResult = document.querySelector(".list-of-entries-result");
     const sequenceEntriesResult = document.querySelector(".sequence-entries-result");
-    const tableauResult = [];
-
-    const longest = [];
-    let tempArr = [];
-    let lastSequence = [];
-    let cloneTab = [];
-
+    let entry;
+    let total;
+    let tableauResult = [];
 
     // MISE A ZERO
     Array.from(results).forEach((result) => result.innerHTML = 0);
 
     // LONGEST INCREASING SEQUENCE 
-    const longestSequence = number => {
+    const longestSequence = arr => {
+
+        let i = 0;
+        let longest = [];
+        let tempArr = [];
+        let lastSequence = [];
 
         if(tableauResult.length === 1) {
             return tableauResult;
         } else {
 
+           while (i <= arr.length) {   
+                if(arr[i] < arr[i+1]) {
+                        tempArr.push(arr[i]);
+                    } else {
+                        // Vérification de la dernière valeur du tableau
+                        if(arr[i + 1] === undefined && arr[i] > tempArr[tempArr.length - 1]) { // ON LAST VALUE 
+                                tempArr.push(arr[i]);
+                                lastSequence = [...tempArr]; 
+                        }
+
+                        // Si le prochain nombre devient décroissant mais que l'actuel est plus grand 
+                        if(arr[i] > tempArr[tempArr.length - 1]) {
+                            tempArr.push(arr[i]);
+                        }
+
+
+                        // On sauvegarde la sequence en cours
+                        lastSequence = [...tempArr];
+                        tempArr.length = 0; 
+
+                        // Si la sequence actuelle est plus grande  
+                        if(lastSequence.length > longest.length) {
+                            longest = [...lastSequence]
+                        }
+                        }
+                    i++;
+                }
         }
 
-        if (lastSequence.length > longest.length) {
-            longest = lastSequence;
-        }
-        return longest
+        return longest.join(", ")
       };
     
     // CLICK ON 'SOUMETTRE'
@@ -54,7 +77,7 @@ window.addEventListener("DOMContentLoaded", () => {
             minEntriesResult.innerHTML = Math.min(...tableauResult);
             averageEntriesResult.innerHTML = Number((total / tableauResult.length).toFixed(2));
             listOfEntriesResult.innerHTML = tableauResult.join(", ");
-            sequenceEntriesResult.innerHTML = longestSequence(entry);
+            sequenceEntriesResult.innerHTML = longestSequence(tableauResult);
         } else {
             alert("Erreur : Inserer un nombre entier");
         }
@@ -64,8 +87,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // RESET
     restart.addEventListener("click", () => {
-        tableauResult.length = 0;
-        tempArr.length = 0;
+        tableauResult.length = 0; 
         Array.from(results).forEach((result) => result.innerHTML = '0');
     });
 
