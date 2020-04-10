@@ -16,41 +16,57 @@ window.addEventListener("DOMContentLoaded", () => {
     const sequenceEntriesResult = document.querySelector(".sequence-entries-result");
     const tableauResult = [];
 
-    // REMISE A ZERO
+    const longest = [];
+    let tempArr = [];
+    let lastSequence = [];
+    let cloneTab = [];
+
+
+    // MISE A ZERO
     Array.from(results).forEach((result) => result.innerHTML = 0);
 
     // LONGEST INCREASING SEQUENCE 
-    const longestSequence = (arr) => {
+    const longestSequence = number => {
 
-      // REWRITE
+        if(tableauResult.length === 1) {
+            return tableauResult;
+        } else {
 
-    }
+        }
+
+        if (lastSequence.length > longest.length) {
+            longest = lastSequence;
+        }
+        return longest
+      };
     
     // CLICK ON 'SOUMETTRE'
     submit.addEventListener("click", () => {
 
-        entry = parseInt(document.querySelector(".user-input").value);
+        entry = Number(document.querySelector(".user-input").value);
 
         if(!isNaN(entry)) {
-          tableauResult.push(entry);
-          totalEntriesResult.innerHTML = tableauResult.length;
-          total = tableauResult.reduce((acc, entree) => acc + entree, 0);
-          sumEntriesResult.innerHTML = total;
-          maxEntriesResult.innerHTML = Math.max.apply(null, tableauResult);
-          minEntriesResult.innerHTML = Math.min.apply(null, tableauResult);
-          averageEntriesResult.innerHTML = (total / tableauResult.length).toFixed(2);
-          listOfEntriesResult.innerHTML = tableauResult.join(", ");
-          sequenceEntriesResult.innerHTML = longestSequence(tableauResult);
+            tableauResult.push(entry); 
+            totalEntriesResult.innerHTML = tableauResult.length;
+            total = tableauResult.reduce((total, entree) => total + entree, 0);
+            sumEntriesResult.innerHTML = total;
+            maxEntriesResult.innerHTML = Math.max(...tableauResult);
+            minEntriesResult.innerHTML = Math.min(...tableauResult);
+            averageEntriesResult.innerHTML = Number((total / tableauResult.length).toFixed(2));
+            listOfEntriesResult.innerHTML = tableauResult.join(", ");
+            sequenceEntriesResult.innerHTML = longestSequence(entry);
         } else {
-          alert("Erreur : Inserer un nombre entier");
+            alert("Erreur : Inserer un nombre entier");
         }
 
     }); 
 
+
     // RESET
     restart.addEventListener("click", () => {
         tableauResult.length = 0;
-        Array.from(results).forEach((result) => result.innerHTML = 0);
+        tempArr.length = 0;
+        Array.from(results).forEach((result) => result.innerHTML = '0');
     });
 
 });

@@ -50,7 +50,7 @@ body {
     position: relative;
     bottom: 0.5rem;
     border: 1px solid gray;
-    overflow-x: scroll;
+    /* overflow-x: scroll; */
 }
 
 .entries div {
