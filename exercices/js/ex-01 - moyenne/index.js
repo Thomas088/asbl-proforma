@@ -46,7 +46,6 @@ window.addEventListener("DOMContentLoaded", () => {
                             tempArr.push(arr[i]);
                         }
 
-
                         // On sauvegarde la sequence en cours
                         lastSequence = [...tempArr];
                         tempArr.length = 0; 
@@ -55,9 +54,9 @@ window.addEventListener("DOMContentLoaded", () => {
                         if(lastSequence.length > longest.length) {
                             longest = [...lastSequence]
                         }
-                        }
+                    }
                     i++;
-                }
+            }
         }
 
         return longest.join(", ")

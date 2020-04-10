@@ -1,33 +1,59 @@
 // Se vide lorsque l'on entre dedans
 
-document.forms[0].ch1.addEventListener('focus', () => document.forms[0].ch1.value="");
+document.forms[0].ch1.addEventListener('focus', function() {
+    document.forms[0].ch1.value="";
+});
 
 // Se vide lorsque l'on entre dedans et qui remet la valeur initiale si le champ est vide lorsqu'on le quitte
 
-document.forms[1].ch1.addEventListener('focus', () => document.forms[1].ch1.value="");
+document.forms[1].ch1.addEventListener('focus', function() {
+    document.forms[1].ch1.value=""
+});
 
-document.forms[1].ch1.addEventListener('blur', () => ((e) => e.ch1.value === "" ? e.ch1.value = "Texte initial" : 0)(document.forms[1]))
+document.forms[1].ch1.addEventListener('blur', function() { 
+    if (document.forms[1].ch1.value === "") {
+    document.forms[1].ch1.value = "Texte initial"
+} else {
+    return 0;
+}}
+
+);
 
 // La taille augmente lorsque l'on appuye sur une touche et qu'on est dedans
 
 document.forms[2].ch1.value = "";
 
-document.forms[2].ch1.addEventListener('keydown', () => document.forms[2].ch1.size++);
+document.forms[2].ch1.addEventListener('keydown', function () {
+    document.forms[2].ch1.size++;
+});
 
 // Affiche les caractères quand la case est cochée, les masque sinon
 
-document.forms[3].cb1.addEventListener('click', () => ((e) => e.ch1.type === "password" ? e.ch1.type = "text" : e.ch1.type = "password")(document.forms[3]));
+document.forms[3].cb1.addEventListener('click', function() {
+
+    if(document.forms[3].ch1.type === "password") {
+        document.forms[3].ch1.type = "text"; 
+    } else {
+        document.forms[3].ch1.type = "password";
+    }
+});
 
 // Affiche les caractères quand on maintient la souris enfoncé sur le carré, les masque sinon
 
 
-document.forms[4].querySelector('.enfonce').addEventListener('mousedown', () => document.forms[4].ch1.type = "text");
+document.forms[4].querySelector('.enfonce').addEventListener('mousedown', function() {
+    document.forms[4].ch1.type = "text"
+});
 
-document.forms[4].querySelector('.enfonce').addEventListener('mouseup', () => document.forms[4].ch1.type = "password");
+document.forms[4].querySelector('.enfonce').addEventListener('mouseup', function() {
+    document.forms[4].ch1.type = "password"
+});
 
 // Jete le focus quand essaye de lui donner
 
-document.forms[5].ch1.addEventListener('focus', () => document.forms[5].ch1.blur())
+document.forms[5].ch1.addEventListener('focus', function() {
+    document.forms[5].ch1.blur()
+});
 
 /* Jete le focus quand essaye de lui donner et que la case à cochée n'est pas activée.
 Si le champ est rempli et que l'on décoche la case, on vide le champ.
@@ -37,20 +63,22 @@ Si on coche la case, on amène le focus dans le champ, et on place la valeur 0; 
 document.forms[6].cb1.checked = false;
 document.forms[6].ch1.value = "";
 
-   (!document.forms[6].ch1.checked) ? document.forms[6].ch1.addEventListener('click', () => document.forms[6].ch1.blur()) : 0;
+   if(!document.forms[6].ch1.checked) {
+       document.forms[6].ch1.addEventListener('click', function() {
+           document.forms[6].ch1.blur();
+        });
+    } 
 
-    document.forms[6].cb1.addEventListener('click', () => {
-         
-        ((e) => {
-            if(e.cb1.checked) {
-                e.ch1.focus();
-                e.ch1.value = 0;
-                e.ch1.addEventListener("focus", () => document.forms[6].ch1.focus());
-            } else {
-                e.ch1.value = "";
-                e.ch1.blur();
-            }
-        })(document.forms[6])            
+document.forms[6].cb1.addEventListener('click', () => {
+
+        if(document.forms[6].cb1.checked) {
+            document.forms[6].ch1.focus();
+            document.forms[6].ch1.value = 0;
+            document.forms[6].ch1.addEventListener("focus", () => document.forms[6].ch1.focus());
+        } else {
+            document.forms[6].ch1.value = "";
+            document.forms[6].ch1.blur();
+        }         
 })
 
 
@@ -63,32 +91,26 @@ document.forms[7].b1.addEventListener('click', () => {
 
     entryForm7 = Number(document.forms[7].ch1.value);
 
-    ((e) => {
-        document.querySelector("#rb1_1").checked ? 
-        e.ch1.value = entryForm7 + 1 : 
+    document.querySelector("#rb1_1").checked ? 
+        document.forms[7].ch1.value = entryForm7 + 1 : 
         document.querySelector("#rb1_2").checked ? 
-        e.ch1.value = entryForm7 - 1 : 0;
-    })(document.forms[7]);
-    
+        document.forms[7].ch1.value = entryForm7 - 1 : 0;
 })
 
 // Le bouton "sauve" place la valeur actuelle du champ comme valeur par défaut.
 // Le bouton "reset" fait son boulot...
 
-
 let entryForm8;
 
 document.forms[8].b1.addEventListener('click', () => {
+        document.forms[8].ch1.defaultValue = "";
+        entryForm8 = document.forms[8].ch1.value;
+        document.forms[8].ch1.defaultValue = entryForm8;
+});
 
-    ((e) => {
-        e.ch1.defaultValue = "";
-        entryForm8 = e.ch1.value;
-        e.ch1.defaultValue = entryForm8;
-    })(document.forms[8])
-
-})
-
-document.forms[8].b2.addEventListener('click', () => document.forms[8].ch1.value = document.forms[8].ch1.defaultValue)
+document.forms[8].b2.addEventListener('click', function() {
+    document.forms[8].ch1.value = document.forms[8].ch1.defaultValue
+});
 
 
 // Place la valeur et le texte de l'option sélectionnée à l'intérieur des champs correspondants
@@ -96,16 +118,14 @@ document.forms[8].b2.addEventListener('click', () => document.forms[8].ch1.value
 document.forms[9].ch1.value = "";
 document.forms[9].ch2.value = "";
 
-document.forms[9].addEventListener("change", () => {
+document.forms[9].addEventListener("change", function() {
 
-      ((e) => {    
-      Array.from(e.s1.options).forEach((option) => {
+    Array.from(document.forms[9].s1.options).forEach((option) => {
         if(option.selected) {
-            e.ch1.value = option.value;
-            e.ch2.value = option.text;
+            document.forms[9].ch1.value = option.value;
+            document.forms[9].ch2.value = option.text;
         }
       }) 
-    } )(document.forms[9])
 })
 
 // Place les valeurs et les textes des options sélectionnées à l'intérieur des champs correspondants
@@ -114,15 +134,23 @@ document.forms[10].ch1.value = "";
 document.forms[10].ch2.value = "";
 
 document.forms[10].addEventListener("change", () => {
+    
+    const arrValues = [];
+    const arrText = [];
 
-      ((e) => {    
-      Array.from(e.s1.options).forEach((option) => {
+    Array.from(document.forms[10].s1.options).forEach((option) => {
+
         if(option.selected) {
-            e.ch1.value = option.value;
-            e.ch2.value = option.text;
+
+            arrValues.push(option.value);
+            arrText.push(option.text);
+
+            document.forms[10].ch1.value = arrValues.join(", ");
+            document.forms[10].ch2.value = arrText.join(", ");
         }
-      }) 
-    } )(document.forms[10])
+      })
+      
+        
 })
 
 // Permutte les valeurs des différents champs dans le sens de la flèche (en boucle)
@@ -175,9 +203,23 @@ const list1 = document.forms[12].querySelector('select:first-of-type');
 const list2 = document.forms[12].querySelector('select:nth-of-type(2)');
 const options = Array.from(document.forms[12].querySelectorAll('option'));
 
-document.forms[12].gauche.addEventListener('click', () => options.forEach((option) => option.selected ? list1.append(option) : 0))
+document.forms[12].gauche.addEventListener('click', function()  {
+            options.forEach((option) => {
+                if(option.selected){
+                    list1.append(option)
+                }
+            }
+        )
+}); 
 
-document.forms[12].droite.addEventListener('click', () => options.forEach((option) => option.selected ? list2.append(option) : 0))
+document.forms[12].droite.addEventListener('click', function()  {
+    options.forEach((option) => {
+        if(option.selected){
+            list2.append(option)
+        }
+    }
+)
+}); 
 
 // 3 Champs de 5 caractères qui ne sont accesibles que si les champs précédents sont remplis(genre entrée de clé)
 
@@ -247,7 +289,6 @@ document.querySelector('div:nth-of-type(16) input').addEventListener('blur', () 
 const arrayCarre = Array.from(document.querySelectorAll('div:nth-of-type(17) > div div'));
 
 arrayCarre.forEach((carre) => {
-
     carre.addEventListener('click', () => {
         arrayCarre.map((allCarre) => allCarre.classList.remove('checked'));
         carre.classList.add('checked');
@@ -276,9 +317,67 @@ arrayCarre2.forEach((carre) => {
 
 // on porte l'image de gauche dans la zone de droite
 
-const leftImage = document.querySelector('[name=\"i4\"]');
+// Pour éviter le chargement des images en déposant
 
-leftImage.addEventListener('click', () => {
-    leftImage.style.position = "relative";
-    leftImage.style.left = "800px";
+window.addEventListener("dragover", function(e){
+    e.preventDefault();
+  });
+  window.addEventListener("drop",function(e){
+    e.preventDefault();
+  });
+
+
+const leftArea = document.querySelector(".gauche");
+const rightArea = document.querySelector(".droite");
+const rightPic = document.querySelector(".droite img");
+const images = Array.from(document.querySelectorAll(".gauche img"));
+let dragged = null;
+rightArea.style.height = "600px";
+rightArea.style.display = "inline-block";
+
+images.map((image) => {
+    image.setAttribute("draggable", "true");
+    image.style.display = "inline-block";
+});
+
+images.forEach((image) => {
+    image.addEventListener('dragstart', function () {
+        dragged = image;
+        setTimeout(function() { 
+            image.style.display = "none;"
+         }, 0)
+    })
+
+    image.addEventListener('dragend', function () {
+        setTimeout(function() {
+            dragged.style.display = 'block';
+            dragged = null;
+        }, 0)
+    })
+
+    image.addEventListener('mouseup', function(e) {
+        e.preventDefault();
+    })
+
 })
+
+rightArea.addEventListener('dragover', function(ev) {
+    ev.preventDefault();
+    ev.stopPropagation();
+    rightArea.style.background = "beige";
+})
+
+rightArea.addEventListener('drop', function() {
+    this.append(dragged);
+})
+
+leftArea.addEventListener('dragover', function(ev) {
+    ev.preventDefault();
+    ev.stopPropagation();
+    leftArea.style.background = "beige";
+})
+
+leftArea.addEventListener('drop', function() {
+    this.append(dragged);
+})
+rightPic.setAttribute("draggable", "true");
