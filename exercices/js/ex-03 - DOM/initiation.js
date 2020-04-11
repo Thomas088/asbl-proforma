@@ -332,8 +332,11 @@ const rightArea = document.querySelector(".droite");
 const rightPic = document.querySelector(".droite img");
 const images = Array.from(document.querySelectorAll(".gauche img"));
 let dragged = null;
+
 rightArea.style.height = "600px";
+leftArea.style.height = "600px";
 rightArea.style.display = "inline-block";
+leftArea.style.display = "inline-block";
 
 images.map((image) => {
     image.setAttribute("draggable", "true");
@@ -361,6 +364,8 @@ images.forEach((image) => {
 
 })
 
+// Zone de droite
+
 rightArea.addEventListener('dragover', function(ev) {
     ev.preventDefault();
     ev.stopPropagation();
@@ -371,6 +376,8 @@ rightArea.addEventListener('drop', function() {
     this.append(dragged);
 })
 
+// Zone de gauche
+
 leftArea.addEventListener('dragover', function(ev) {
     ev.preventDefault();
     ev.stopPropagation();
@@ -380,4 +387,23 @@ leftArea.addEventListener('dragover', function(ev) {
 leftArea.addEventListener('drop', function() {
     this.append(dragged);
 })
-rightPic.setAttribute("draggable", "true");
+
+// **BONUS**
+
+// On clique sur l'image à droite pour lui donner le src de la dernière image de gauche sur la quelle on a cliquer
+
+let lastImage;
+
+images.forEach((image) => {   
+    image.addEventListener('click', function() {
+        lastImage = image.src;
+    })    
+})
+
+const containerUrl = document.createElement("p");
+rightArea.append(containerUrl);
+
+//  Cat
+rightPic.addEventListener('click', function() {
+    containerUrl.innerHTML = lastImage;
+});
