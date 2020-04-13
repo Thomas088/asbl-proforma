@@ -1,10 +1,16 @@
 function game() {
 
-   const colors = ["green", "blue", "purple", "gold", "brown", "teal", "pink"];
+   const colors = ["green", "blue", "purple", "gold", "brown", "mauve", "pink"];
+   const choicePlayer = [];
+   let attempts = 10;
+
+   // Genere une couleurs
 
    function randomChoiceColor()  {
       return colors[Math.round(Math.random() * Math.round(colors.length - 1))];
    }
+
+   // Genere un tableau de couleurs unique pour l'ordi
    
    function arrayOfColorsPC() {
 
@@ -16,7 +22,8 @@ function game() {
          // Verifie les doublons
          if(array.indexOf(value) === -1) { 
             array.push(value);
-         } else { // Si la valeur existe, on revient en arrière d'un index.
+         } else { 
+         // Si la valeur existe, revient en arrière d'un index.
             i-=1;
          }
         i++;   
@@ -26,6 +33,7 @@ function game() {
 
   const choicePC = arrayOfColorsPC();
   console.log(choicePC);
+
 }
 
 window.addEventListener('DOMContentLoaded', game)
