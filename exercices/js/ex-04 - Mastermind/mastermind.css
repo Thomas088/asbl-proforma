@@ -1,0 +1,85 @@
+:root {
+
+}
+
+html {
+    font-family: 'Raleway', sans-serif;
+}
+
+.wrapper {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+body {
+ width: 100vw;
+ height: 100vh;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+.container-game {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+/* GENERAL */
+
+.container-choices-player, .container-choice-pc, .hints {
+    border: 1px solid black; 
+}
+
+.container-choices-player, .container-choice-pc {
+    padding: 1.5rem;
+}
+
+.container-player-attempt, .container-choice-pc {
+    display: flex;
+}
+
+.pion {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    margin: 0 1rem;
+    border: 1px solid black;
+}
+
+/* PC SIDE */
+
+.container-choices-pc {
+    width: 30%;
+}
+
+.colors-pc {
+    margin: auto;
+    display: flex;
+}
+
+
+/* PLAYER SIDE */
+
+.container-player-attempt {
+    margin: 0.3rem;
+}
+
+
+/* HINTS SIDE */
+
+.hints{
+    width: 10%;
+}
+
+
+
+
+
+
+
