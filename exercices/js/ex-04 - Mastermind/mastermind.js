@@ -16,6 +16,7 @@ function game() {
 
       let array = [];
       let i = 0;
+      
 
       do {
          let value = randomChoiceColor()  
