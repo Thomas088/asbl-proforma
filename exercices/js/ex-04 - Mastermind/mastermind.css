@@ -44,8 +44,13 @@ h1 {
 
 /* GENERAL */
 
-.container-choices-player, .container-choice-pc, .hints {
-    border: 1px solid lightslategrey; 
+.container-choice-pc {
+    border: 3px solid lightslategray;
+}
+
+.container-choices-player {
+    border-left: 3px solid lightslategray;
+    border-right: 3px solid lightslategray;
 }
 
 .container-choices-player, .container-choice-pc {
@@ -145,6 +150,7 @@ h1 {
 
 .container-choices-pc {
     width: 30%;
+    border-bottom-right-radius: 12px;
 }
 
 .colors-pc {
