@@ -1,7 +1,5 @@
 :root {
-
     /* COLORS */
-
     --green: #649d66;
     --blue: #035aa6;
     --purple: #95389e;
@@ -10,6 +8,10 @@
     --mauve: #ea7ad7;
     --pink: #efb1ff; 
     --empty: lightgray;
+    --tealGame : rgb(7, 179, 179);
+    --hint-black: #242424;
+    --hint-white: whitesmoke;
+    --hint-empty: lightgray;
 }
 
 html {
@@ -54,8 +56,22 @@ h1 {
     display: flex;
 }
 
-.container-choice-pc, .container-choices-player, .hints {
+.container-choices-player, .hints {
     background: darkgrey;
+}
+
+.colors-pc .pion {
+    position: relative;
+    /* z-index: -1; */
+}
+
+.container-choice-pc {
+    background: var(--tealGame);
+    position: relative;
+}
+
+.sail-pc-choice {
+    z-index: 2;
 }
 
 .pion {
@@ -67,9 +83,20 @@ h1 {
     background: var(--empty);
 }
 
+.pion.return {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.undo-ico {
+    width: 50%;
+    height: auto;
+}
+
 .choose-color {
     padding-top: 0.8rem;
-    background: rgb(7, 179, 179);
+    background: var(--tealGame);
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
 }
@@ -84,33 +111,33 @@ h1 {
     border-bottom-right-radius: 12px;
 }
 
-/* PAWNS TO PICK */
+/* PAWNS - GENERAL */
 
-.choose-color > .pion.green {
+.pion.green {
     background: var(--green);
 }
 
-.choose-color > .pion.blue {
+.pion.blue {
     background: var(--blue);
 }
 
-.choose-color > .pion.purple {
+.pion.purple {
     background: var(--purple);
 }
 
-.choose-color > .pion.gold {
+.pion.gold {
     background: var(--gold);
 }
 
-.choose-color > .pion.brown {
+.pion.brown {
     background: var(--brown);
 }
 
-.choose-color > .pion.mauve {
+.pion.mauve {
     background: var(--mauve);
 }
 
-.choose-color > .pion.pink {
+.pion.pink {
     background: var(--pink);
 }
 
@@ -137,10 +164,30 @@ h1 {
 
 .hints {
     width: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 2.5rem;
 }
 
 .container-hint {
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+/* HINTS - GENERAL */
+
+.hint {
+    width: 0.5rem;
+    height: 0.5rem;
+    margin: 0 0.1rem;
+    border-radius: 50%;
+    border: 1px solid whitesmoke;
+    background: var(--hint-empty);
 }
 
 

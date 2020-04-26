@@ -19,10 +19,10 @@ function game() {
       
 
       do {
-         let value = randomChoiceColor()  
+         let color = randomChoiceColor()  
          // Verifie les doublons
-         if(array.indexOf(value) === -1) { 
-            array.push(value);
+         if(array.indexOf(color) === -1) { 
+            array.push(color);
          } else { 
          // Si la valeur existe, revient en arrière d'un index.
             i-=1;
