@@ -1,8 +1,8 @@
 function game() {
 
+   /* --------- LIST OF FUNCTIONS --------- */
    
    // Genere une couleur
-
    function randomChoiceColor()  {
 
       const colors = ["green", "blue", "purple", "gold", "brown", "mauve", "pink"];
@@ -11,7 +11,6 @@ function game() {
 
 
     // Genere un tableau de couleurs unique pour l'ordi
-
     function arrayOfColorsPC() {
 
       let array = [];
@@ -32,10 +31,24 @@ function game() {
       return array;
    }
 
+   //  Ajoute le choix utilisateur dans la zone de tentative
+   function addColorOnScreen(arr, color, target) {
+
+      if(arr.length === 4) {
+         return false; 
+      } else {
+         target.classList.add(color)
+         return arr.push(color);
+      }   
+   }
+
+   /* --------- VARIABLES --------- */
+
    const choicePC = arrayOfColorsPC();
    const pawnsPcDisplay = [...document.querySelectorAll('.colors-pc .pion')];
    const pawnsColorPalette = [...document.querySelectorAll('.choose-color .choice-pawn-player')];
-   const playerAttemptAreas = [...document.querySelectorAll('.container-player-attempt')];  
+   const playerAttemptAreas = [...document.querySelectorAll('.container-player-attempt')];
+   const pawnArea;
    const choicePlayer = [];
    // let attempts = 10;
 
@@ -44,24 +57,17 @@ function game() {
       pawnsPcDisplay[i].classList.add(choicePC[i]);
    }
 
+   
    pawnsColorPalette.forEach((pawn) => {
-
-      function addColorOnScreen(arr, color) {
-         if(arr.length === 4) {
-            return arr; 
-         } else {
-            console.log(arr)
-            return arr.push(color);
-         }   
-      }
-
       pawn.addEventListener('click', function(){
-            addColorOnScreen(choicePlayer, pawn.dataset.color);  
+            addColorOnScreen(choicePlayer, pawn.dataset.color); 
+            console.log(choicePlayer); 
       })
    })
 
+   // DEBUG ZONE
 
-
+  console.log(choicePlayer); 
   console.log(choicePC);
   console.log(pawnsPC);
 
