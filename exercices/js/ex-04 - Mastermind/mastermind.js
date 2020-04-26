@@ -32,12 +32,12 @@ function game() {
    }
 
    //  Ajoute le choix utilisateur dans la zone de tentative
-   function addColorOnScreen(arr, color, target) {
+   function addColorOnScreen(arr, color /* target */) {
 
       if(arr.length === 4) {
          return false; 
       } else {
-         target.classList.add(color)
+         // target.classList.add(color)
          return arr.push(color);
       }   
    }
@@ -48,7 +48,7 @@ function game() {
    const pawnsPcDisplay = [...document.querySelectorAll('.colors-pc .pion')];
    const pawnsColorPalette = [...document.querySelectorAll('.choose-color .choice-pawn-player')];
    const playerAttemptAreas = [...document.querySelectorAll('.container-player-attempt')];
-   const pawnArea;
+   let pawnArea;
    const choicePlayer = [];
    // let attempts = 10;
 
@@ -57,6 +57,7 @@ function game() {
       pawnsPcDisplay[i].classList.add(choicePC[i]);
    }
 
+   /* --------- INTERACTION --------- */
    
    pawnsColorPalette.forEach((pawn) => {
       pawn.addEventListener('click', function(){
@@ -66,10 +67,7 @@ function game() {
    })
 
    // DEBUG ZONE
-
-  console.log(choicePlayer); 
   console.log(choicePC);
-  console.log(pawnsPC);
 
 }
 

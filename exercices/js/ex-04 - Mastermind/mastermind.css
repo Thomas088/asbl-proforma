@@ -67,7 +67,7 @@ h1 {
 
 .colors-pc .pion {
     position: relative;
-    /* z-index: -1; */
+    z-index: -1;
 }
 
 .container-choice-pc {
@@ -100,6 +100,9 @@ h1 {
 }
 
 .choose-color {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding-top: 0.8rem;
     background: var(--tealGame);
     border-top-left-radius: 12px;
@@ -107,7 +110,7 @@ h1 {
 }
 
 .choose-color .pion {
-    margin: 1rem 2.5rem;
+    margin: 0.8rem 2.5rem;
     cursor: pointer;
 }
 
