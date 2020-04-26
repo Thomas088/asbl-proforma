@@ -1,5 +1,15 @@
 :root {
 
+    /* COLORS */
+
+    --green: #649d66;
+    --blue: #035aa6;
+    --purple: #95389e;
+    --gold: #f4a548;
+    --brown: #9c5518;
+    --mauve: #ea7ad7;
+    --pink: #efb1ff; 
+    --empty: lightgray;
 }
 
 html {
@@ -33,7 +43,7 @@ h1 {
 /* GENERAL */
 
 .container-choices-player, .container-choice-pc, .hints {
-    border: 1px solid black; 
+    border: 1px solid lightslategrey; 
 }
 
 .container-choices-player, .container-choice-pc {
@@ -44,12 +54,64 @@ h1 {
     display: flex;
 }
 
+.container-choice-pc, .container-choices-player, .hints {
+    background: darkgrey;
+}
+
 .pion {
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
     margin: 0 1rem;
-    border: 1px solid black;
+    border: 1px solid grey;
+    background: var(--empty);
+}
+
+.choose-color {
+    padding-top: 0.8rem;
+    background: rgb(7, 179, 179);
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.choose-color .pion {
+    margin: 1rem 2.5rem;
+    cursor: pointer;
+}
+
+.hints {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+/* PAWNS TO PICK */
+
+.choose-color > .pion.green {
+    background: var(--green);
+}
+
+.choose-color > .pion.blue {
+    background: var(--blue);
+}
+
+.choose-color > .pion.purple {
+    background: var(--purple);
+}
+
+.choose-color > .pion.gold {
+    background: var(--gold);
+}
+
+.choose-color > .pion.brown {
+    background: var(--brown);
+}
+
+.choose-color > .pion.mauve {
+    background: var(--mauve);
+}
+
+.choose-color > .pion.pink {
+    background: var(--pink);
 }
 
 /* PC SIDE */
@@ -73,8 +135,12 @@ h1 {
 
 /* HINTS SIDE */
 
-.hints{
+.hints {
     width: 10%;
+}
+
+.container-hint {
+
 }
 
 
