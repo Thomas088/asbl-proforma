@@ -9,7 +9,6 @@ function game() {
       return colors[Math.round(Math.random() * Math.round(colors.length - 1))];
    }
 
-
     // Genere un tableau de couleurs unique pour l'ordi
     function arrayOfColorsPC() {
 
@@ -32,42 +31,120 @@ function game() {
    }
 
    //  Ajoute le choix utilisateur dans la zone de tentative
-   function addColorOnScreen(arr, color /* target */) {
-
+   function addColorOnScreen(arr, color, target) {
       if(arr.length === 4) {
          return false; 
       } else {
-         // target.classList.add(color)
-         return arr.push(color);
+         let pawnCurrentClasses = [...target.classList];
+         if(pawnCurrentClasses.length === 1) {
+            target.classList.add(color);
+            arr.push(color);
+         } else { 
+            return false;
+         }
       }   
    }
+
+   // Ajoute les pistes 
+
+   function addHintsToScreen() {
+
+   }
+
+   // Affiche une nouvelle tentative
+
+   function newAreaAttempt(current, next) {
+      current.classList.add('no-interact');   
+      next.classList.remove("hidden");
+   }
+
+   // reset
+   function reset(playerAreas, hints) {
+
+      playerAreas.map((area) => {
+
+         if(playerAreas.indexOf(area) !== 0) {
+            area.classList.add("hidden");
+         }
+      });
+
+      hints.map((container) => {
+
+         if(hints.indexOf(container) !== 0) {
+            container.classList.add("hidden");
+         }
+      });
+   }
+
 
    /* --------- VARIABLES --------- */
 
    const choicePC = arrayOfColorsPC();
    const pawnsPcDisplay = [...document.querySelectorAll('.colors-pc .pion')];
    const pawnsColorPalette = [...document.querySelectorAll('.choose-color .choice-pawn-player')];
-   const playerAttemptAreas = [...document.querySelectorAll('.container-player-attempt')];
-   let pawnArea;
+   const playerAttemptAreas = [...document.querySelectorAll('.container-player-attempt')].reverse();
+   // const pawnEmptyAreas = [...document.querySelectorAll('.container-player-attempt .pion')];
+   const hintContainers = [...document.querySelectorAll('.container-hint')].reverse();
+   const hintResults = [...document.querySelectorAll('.container-hint hint')];
+   currentContainerHint = document.querySelector('.container-hint:not(.hidden):last-child');
+   const currentContainerTarget = document.querySelector('.container-player-attempt:not(.hidden):last-child');
+   // const nextContainerTarget = document.querySelector('.container-player-attempt:not(.hidden):last-child');
+   const pawnsTarget = [...document.querySelectorAll('.container-player-attempt:not(.hidden):last-child .pion')];
+   const returnButton = document.querySelector('.pion.return');
    const choicePlayer = [];
+   let index = 0;
    // let attempts = 10;
 
-  // Affiche le resultat de l'ordi
+
+
+   /* --------- START --------- */
+
+   reset(playerAttemptAreas, hintContainers);
+
+   // Affiche le resultat de l'ordi
    for(let i = 0; i < pawnsPcDisplay.length; i++) {
       pawnsPcDisplay[i].classList.add(choicePC[i]);
    }
 
-   /* --------- INTERACTION --------- */
+   /* --------- INTERACTIONS --------- */
    
    pawnsColorPalette.forEach((pawn) => {
       pawn.addEventListener('click', function(){
-            addColorOnScreen(choicePlayer, pawn.dataset.color); 
-            console.log(choicePlayer); 
+         do {
+            
+            if(choicePlayer.length === 4) {
+               
+            }
+
+            addColorOnScreen(choicePlayer, pawn.dataset.color, pawnsTarget[index]);
+            index++;
+         } while (index < choicePlayer.length); 
       })
    })
 
-   // DEBUG ZONE
-  console.log(choicePC);
+
+
+
+   // returnButton.addEventListener('click', function() {
+
+   // })
+
+
+   /* --------- ESSAIS --------- */
+
+   
+   
+   
+   
+   
+   /* --------- DEBUG ZONE --------- */
+
+   // console.log(playerAttemptAreas);
+   // pawnsContainerTarget.forEach((test) => test.classList.add("green"));
+   // console.log(pawnsContainerTarget); 
+   // console.log(returnButton);
+   // console.log(choicePC)
+   // console.log(choicePlayer);
 
 }
 

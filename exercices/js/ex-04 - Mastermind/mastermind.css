@@ -12,6 +12,7 @@
     --hint-black: #242424;
     --hint-white: whitesmoke;
     --hint-empty: lightgray;
+    --light-gray: lightslategray;
 }
 
 html {
@@ -45,12 +46,12 @@ h1 {
 /* GENERAL */
 
 .container-choice-pc {
-    border: 3px solid lightslategray;
+    border: 3px solid var(--light-gray);
 }
 
 .container-choices-player {
-    border-left: 3px solid lightslategray;
-    border-right: 3px solid lightslategray;
+    border-left: 3px solid var(--light-gray);
+    border-right: 3px solid var(--light-gray);
 }
 
 .container-choices-player, .container-choice-pc {
@@ -86,6 +87,7 @@ h1 {
     margin: 0 1rem;
     border: 1px solid grey;
     background: var(--empty);
+    cursor: pointer;
 }
 
 .pion.return {
@@ -117,6 +119,15 @@ h1 {
 .hints {
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.no-interact {
+    pointer-events: none;
 }
 
 /* PAWNS - GENERAL */
