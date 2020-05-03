@@ -1,4 +1,20 @@
-function game() {
+  /* --------- VARIABLES --------- */
+
+   const choicePC = arrayOfColorsPC();
+   const pawnsPcDisplay = [...document.querySelectorAll('.colors-pc .pion')];
+   const pawnsColorPalette = [...document.querySelectorAll('.choose-color .choice-pawn-player')];
+   const playerAttemptAreas = [...document.querySelectorAll('.container-player-attempt')].reverse();
+   // const pawnEmptyAreas = [...document.querySelectorAll('.container-player-attempt .pion')];
+   const hintContainers = [...document.querySelectorAll('.container-hint')].reverse();
+   const hintResults = [...document.querySelectorAll('.container-hint hint')];
+   currentContainerHint = document.querySelector('.container-hint:not(.hidden):last-child');
+   const currentContainerTarget = document.querySelector('.container-player-attempt:not(.hidden):last-child');
+   // const nextContainerTarget = document.querySelector('.container-player-attempt:not(.hidden):last-child');
+   const pawnsTarget = [...document.querySelectorAll('.container-player-attempt:not(.hidden):last-child .pion')];
+   const returnButton = document.querySelector('.pion.return');
+   const choicePlayer = [];
+   let index = 0;
+   // let attempts = 10;
 
    /* --------- LIST OF FUNCTIONS --------- */
    
@@ -51,6 +67,13 @@ function game() {
 
    }
 
+   function test(arr, index) {
+      if (arr.length === 4) {
+         alert('ok')
+      }
+   }
+
+
    // Affiche une nouvelle tentative
 
    function newAreaAttempt(current, next) {
@@ -77,26 +100,6 @@ function game() {
    }
 
 
-   /* --------- VARIABLES --------- */
-
-   const choicePC = arrayOfColorsPC();
-   const pawnsPcDisplay = [...document.querySelectorAll('.colors-pc .pion')];
-   const pawnsColorPalette = [...document.querySelectorAll('.choose-color .choice-pawn-player')];
-   const playerAttemptAreas = [...document.querySelectorAll('.container-player-attempt')].reverse();
-   // const pawnEmptyAreas = [...document.querySelectorAll('.container-player-attempt .pion')];
-   const hintContainers = [...document.querySelectorAll('.container-hint')].reverse();
-   const hintResults = [...document.querySelectorAll('.container-hint hint')];
-   currentContainerHint = document.querySelector('.container-hint:not(.hidden):last-child');
-   const currentContainerTarget = document.querySelector('.container-player-attempt:not(.hidden):last-child');
-   // const nextContainerTarget = document.querySelector('.container-player-attempt:not(.hidden):last-child');
-   const pawnsTarget = [...document.querySelectorAll('.container-player-attempt:not(.hidden):last-child .pion')];
-   const returnButton = document.querySelector('.pion.return');
-   const choicePlayer = [];
-   let index = 0;
-   // let attempts = 10;
-
-
-
    /* --------- START --------- */
 
    reset(playerAttemptAreas, hintContainers);
@@ -107,20 +110,22 @@ function game() {
    }
 
    /* --------- INTERACTIONS --------- */
+
+   // if(choicePlayer.length === 4) {
+   //    alert('ok');        
+   // }
    
    pawnsColorPalette.forEach((pawn) => {
       pawn.addEventListener('click', function(){
          do {
-            
-            if(choicePlayer.length === 4) {
-               
-            }
-
             addColorOnScreen(choicePlayer, pawn.dataset.color, pawnsTarget[index]);
             index++;
          } while (index < choicePlayer.length); 
       })
    })
+
+   
+
 
 
 
@@ -146,6 +151,4 @@ function game() {
    // console.log(choicePC)
    // console.log(choicePlayer);
 
-}
 
-window.addEventListener('DOMContentLoaded', game)
