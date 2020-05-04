@@ -67,13 +67,6 @@
 
    }
 
-   function test(arr, index) {
-      if (arr.length === 4) {
-         alert('ok')
-      }
-   }
-
-
    // Affiche une nouvelle tentative
 
    function newAreaAttempt(current, next) {

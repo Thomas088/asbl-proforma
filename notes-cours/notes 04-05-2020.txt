@@ -1,0 +1,51 @@
+Electron.js => base sur Chromium
+Ionic => transformation en appli mobile
+
+Methode scrum 
+
+/------- VIDEO 1 -------/
+
+Notes : 
+
+- Etre agile : epouser un environnement mutant (adaptabilite)
+- Travailler son mindset 
+- L'agilite est une METHODE
+
+Principe 1 : La productivite (optimiser le temps avec moins de ressources)
+Principe 2 : La simplicite
+Principe 3 : L'efficience (montrer tres rapidement les avancees)
+Principe 4 : la transparence (communication entre membres, avec l'equipe...)
+
+Product Owner : Responsable du produit 
+Scrum master : Responsable de l'animation (Respect des methodes) / manager de la methode
+
+Scrum : Gestion par iteration (livraisons de sous-projets)
+
+/------- VIDEO 2 -------/
+
+Methodes agiles : 
+
+- Scrum: 1995 
+- gitscrum.com
+
+Outils
+
+- Backlog produit : ensemble des besoinspour le projet (Product Owner)
+- Equipe de dev : s'occupe du projet par iteration
+- Livraion d'un increment de produit
+- Product Owner => organise des plannings de sprint (partage des objectifs atteignables)
+- Product Owner + Equipe de dev => Daily Meeting (inspection du travail / suivi d'avancement)
+- Revue de sprint : (dernier jour de l'iteration / demontrer / valoriser le travail / anticiper le futur)
+- Retrospective : Inspection des features / livrables (ensembles d'actions / amelioration du produit)
+
+ Produits
+
+ - Evolutions
+ - Bugs
+
+
+3 piliers 
+
+- Transparence 
+- Inspection
+- Adaptation
