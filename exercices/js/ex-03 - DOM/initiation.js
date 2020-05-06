@@ -400,10 +400,8 @@ images.forEach((image) => {
     })    
 })
 
-const containerUrl = document.createElement("p");
-rightArea.append(containerUrl);
-
 //  Cat
-rightPic.addEventListener('click', function() {
-    containerUrl.innerHTML = lastImage;
-});
+rightPic.addEventListener("click", function () {
+    rightPic.src = lastImage;
+  });
+  
