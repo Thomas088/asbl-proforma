@@ -393,15 +393,20 @@ leftArea.addEventListener('drop', function() {
 // On clique sur l'image à droite pour lui donner le src de la dernière image de gauche sur la quelle on a cliquer
 
 let lastImage;
+let lastWidth;
+let lastHeight;
 
-images.forEach((image) => {   
-    image.addEventListener('click', function() {
-        lastImage = image.src;
-    })    
-})
+images.forEach((image) => {
+  image.addEventListener("click", function () {
+    lastImage = image.src;
+    lastWidth = image.clientWidth;
+    lastHeight = image.clientHeight;
+  });
+});
 
 //  Cat
 rightPic.addEventListener("click", function () {
-    rightPic.src = lastImage;
-  });
-  
+  rightPic.src = lastImage;
+  rightPic.style.width = lastWidth + "px";
+  rightPic.style.height = lastHeight + "px";
+});
